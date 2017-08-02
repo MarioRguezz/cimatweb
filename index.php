@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maxium-scale=1.0, minium-scale=1.0">
     <title>Done-Index</title>
    <!-- <style type="text/css">-->
-   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-   <link rel="stylesheet" type="text/css" href="../framework/bootstrap.min.css">
-   <link rel="stylesheet" type="text/css" href="../css/estilos.css">
+  <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
+   <link rel="stylesheet" type="text/css" href="Resources/framework/css/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="Resources/css/estilos.css">
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="../framework/js/bootstrap.min.js"></script>
+<!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+<script src="Resources/framework/js/bootstrap.min.js"></script>
    <!-- </style>-->
 </head>
 <body>
@@ -29,7 +29,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.jsp"><img src="../img/x.jpg" width="60" height="20"></a>
+    <a class="navbar-brand" href="index.jsp"><img src="Resources/img/x.jpg" width="60" height="20"></a>
   </div>
 
   <!-- Menú-->
@@ -90,7 +90,7 @@
           </ol>
         </div>
         <article class="post clearfix">
-          <a href="#" class="thumb pull-left"> <img class="img-thumbnail" src="../img/1441058489431.jpg" alt="">   </a>
+          <a href="#" class="thumb pull-left"> <img class="img-thumbnail" src="Resources/img/1441058489431.jpg" alt="">   </a>
           <h2 class="post-title"> <a href="#"> Inicia nuevos proyectos html 5 </a> </h2>
           <p> <span class="post-fecha"> 26 de Enero del 2015</span> por <span class="post-autor"><a href="#"> Carlos Arturo</a> </span> </p>
         </p>
@@ -104,7 +104,7 @@
            <a href="#" class="btn btn-success">Comentarios <span class="badge">20 </span> </a>
          </article>
           <article class="post clearfix">
-          <a href="#" class="thumb pull-left"> <img class="img-thumbnail" src="../img/1441058489431.jpg" alt="">   </a>
+          <a href="#" class="thumb pull-left"> <img class="img-thumbnail" src="Resources/img/1441058489431.jpg" alt="">   </a>
           <h2 class="post-title"> <a href="#"> Inicia nuevos proyectos html 5 </a> </h2>
           <p> <span class="post-fecha"> 26 de Enero del 2015</span> por <span class="post-autor"><a href="#"> Carlos Arturo</a> </span> </p>
         </p>
@@ -118,7 +118,7 @@
            <a href="#" class="btn btn-success">Comentarios <span class="badge">20 </span> </a>
          </article>
           <article class="post clearfix">
-          <a href="#" class="thumb pull-left"> <img class="img-thumbnail" src="../img/1441058489431.jpg" alt="">   </a>
+          <a href="#" class="thumb pull-left"> <img class="img-thumbnail" src="Resources/img/1441058489431.jpg" alt="">   </a>
           <h2 class="post-title"> <a href="#"> Inicia nuevos proyectos html 5 </a> </h2>
           <p> <span class="post-fecha"> 26 de Enero del 2015</span> por <span class="post-autor"><a href="#"> Carlos Arturo</a> </span> </p>
         </p>

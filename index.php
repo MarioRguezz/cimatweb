@@ -4,7 +4,7 @@
 
 <?php
 echo "My first PHP script!";
-header('Location: ../Resources/views/x.html');
+header('Location: /Resources/views/x.html');
 ?>
 
 </body>

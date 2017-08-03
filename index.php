@@ -44,6 +44,11 @@
     <?PHP
     include 'Resources/php/conexion.php';
     include 'Resources/php/template.php';
+    session_start();
+    include_once 'Resources/php/models/User.php';
+    $user = unserialize($_SESSION['user']);
+    $name = $user->getNombre();
+    var_dump($name);
     ?>
   <!-- Pre Loader -->
   <div id="aa-preloader-area">
@@ -78,7 +83,9 @@
             <li><a href="#">HOME</a></li>
             <li><a href="#">EVENTOS</a></li>
           <!--  <li><a href="#">ACERCA DE NOSOTROS</a></li>-->
-            <li><a href="#">INICIA SESIÓN</a></li>
+          <!--  <li><a   data-toggle="modal" data-target="#myModalLogin" href="#">INICIA SESIÓN</a></li>-->
+           <li><a   data-toggle="modal" data-target="#myModalLogin" href="#"><?PHP echo $name?></a></li>
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -554,6 +561,43 @@
               </div>
           </div>
 
+      </div>
+  </div>
+
+
+  <!-- Modal login -->
+  <div id="myModalLogin" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Ametriz</h4>
+              </div>
+              <div class="modal-body">
+                <h3>Inicia sesión</h3>
+                <p>Ingresa tu usuario y contraseña</p>
+                <form action="Resources/php/login.php" class="form-horizontal"  method="post" enctype="multipart/form-data">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input id="email" type="text" class="form-control" required name="email" placeholder="Email">
+                  </div>
+                  <br>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input id="password" type="password" class="form-control" required name="password" placeholder="Contraseña">
+                  </div>
+                  <br>
+                  <div class="input-group">
+                    <input type="submit" class="btn btn-primary" value="Entrar" />
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <a style="float:left;"href="#"> ¿No cuentas con cuenta?</a>
+                  <button type="button" style="float:right;" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              </div>
+          </div>
       </div>
   </div>
 

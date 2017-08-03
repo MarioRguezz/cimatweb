@@ -5,5 +5,4 @@
   $backgtroundrow = mysqli_fetch_array($background);
   $backgroundcolor = $backgtroundrow['background'];
   $logo = $backgtroundrow['logo'];
-  var_dump($backgroundcolor." ".$logo );
 ?>

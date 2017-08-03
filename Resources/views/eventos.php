@@ -46,7 +46,16 @@
 	<?php
 	include("../php/dbManejador.php");
 	$eventos = eventosInformacion();
-    include '../php/template.php';
+  include '../php/template.php';
+    session_start();
+ include_once '../php/models/User.php';
+if(isset($_SESSION['user'])){
+   $user = unserialize($_SESSION['user']);
+   $name = $user->getNombre();
+   var_dump($name);
+} else{
+
+}
     ?>
     <!-- Navigation -->
 <!-- Pre Loader -->
@@ -78,7 +87,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">
-					<li><a href="../../">HOME</a></li>
+					<li><a href="admin.php">HOME</a></li>
           <?PHP
             if(!isset($_SESSION['user'])){
                 echo "<li><a  data-toggle='modal' data-target='#myModalLogin' href='#'>INICIA SESIÓN</a></li>";

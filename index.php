@@ -80,12 +80,12 @@
             <span class="icon-bar"></span>
           </button>
           <!-- LOGO -->
-          <a class="navbar-brand" href="index.php"><img src="Resources/<?php echo $logo?>" alt="Logo img"></a>
+          <a class="navbar-brand" href="index.php"><img src="Resources<?php echo $logo?>" alt="Logo img"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">
             <li><a href="#">HOME</a></li>
-            <li><a href="Resources/views/eventos.php">EVENTOS</a></li>
+            <li><a href="#">EVENTOS</a></li>
               <?PHP
                 if(!isset($_SESSION['user'])){
                     echo "<li><a  data-toggle='modal' data-target='#myModalLogin' href='#'>INICIA SESIÓN</a></li>";
@@ -607,7 +607,7 @@
                 </form>
               </div>
               <div class="modal-footer">
-                <a style="float:left;"href="#"> ¿No cuentas con cuenta?</a>
+                <a style="float:left;"href="Resources/views/createUser.php"> ¿No cuentas con cuenta?</a>
                   <button type="button" style="float:right;" class="btn btn-default" data-dismiss="modal">Cerrar</button>
               </div>
           </div>

@@ -7,65 +7,65 @@
                     <h4 class="modal-title">Evento</h4>
                 </div>
                 <div class="modal-body">
-                
+
                     <form id="eventoForm" enctype="multipart/form-data">
-					
+
                         <input type="hidden" id="id">
-                        
+
                         <div class="form-group">
                             <label for="nombre" class="form-control-label">Nombre:</label>
                             <input type="text" class="form-control" id="nombre" name="nombre">
                             <span class="help-block" id="nombreError" />
                         </div>
-									
+
                         <div class="form-group">
 							<label for="fechaInicio" class="form-control-label">Fecha de Inicio:</label>
 								<input type="text" class="form-control" id="fechaInicio" name="fechaInicio">
-		
+
 							<span class="help-block" id="fechaInicioError" />
                         </div>
-						
+
 						<div class="form-group">
                             <label for="fechaFin" class="form-control-label">Fecha de Finalizaci&oacuten:</label>
-	
+
 								<input type="text" class="form-control" id="fechaFin" name="fechaFin">
-				
+
                             <span class="help-block" id="fechaFinError" />
                         </div>
-						
+
 						<div class="form-group">
                             <label for="descripcion" class="form-control-label">Descripci&oacuten:</label>
                             <textarea class="form-control" id="descripcion" name="descripcion"></textarea>
                             <span class="help-block" id="descripcionError" />
                         </div>
-	
+
 						<div class="form-group">
                             <label for="fotografia" class="form-control-label">Fotograf&iacutea:</label>
-                            <input type="file" class="filestyle" data-buttonBefore="true" data-buttonText="Buscar Fotrografia" id="fotografia" name="fotografia">
+                            <input type="file" class="filestyle" data-buttonBefore="true" data-buttonText="Buscar Fotografía" id="fotografia" accept="image/x-png,image/gif,image/jpeg" name="fotografia">
                             <span class="help-block" id="fotografiaError" />
                         </div>
-						
+
 						<div class="form-group">
                             <label for="capacidad" class="form-control-label">Capacidad:</label>
                             <input type="text" class="form-control" id="capacidad" name="capacidad">
                             <span class="help-block" id="capacidadError" />
                         </div>
-						
+
 						<div class="form-group">
                             <label for="precio" class="form-control-label">Precio:</label>
                             <input type="text" class="form-control" id="precio" step="0.1" name="precio">
                             <span class="help-block" id="precioError" />
                         </div>
-						
+
                         <div id="success"></div>
-                        
+
                         <div class="form-group">
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                 <button type="submite" id="buttonSave" class="btn btn-primary">Guardar</button>
                             </div>
                         </div>
-                        
+
                     </form>
                 </div>
             </div>
@@ -82,9 +82,9 @@
         message: 'Este valor no es valido',
         feedbackIcons: {
         },
-		
+
         fields: {
-		
+
 			nombre: {
                 container: '#nombreError',
                 validators: {
@@ -93,31 +93,31 @@
                     }
                 }
             },
-			
+
 			fechaInicio: {
                 container: '#fechaInicioError',
                 validators: {
                     notEmpty: {
                         message: 'La fecha de inicio es requerida.'
                     },
-					date: { 
+					date: {
 						format: 'YYYY-MM-DD'
-					}    
+					}
                 }
             },
-			
+
 			fechaFin: {
                 container: '#fechaFinError',
                 validators: {
                     notEmpty: {
                         message: 'La fecha de finalizaci&oacuten es requerida.'
                     },
-					date: { 
-						format: 'YYYY-MM-DD' 
-					}                     
+					date: {
+						format: 'YYYY-MM-DD'
+					}
 				}
             },
-			
+
 			descripcion: {
                 container: '#descripcionError',
                 validators: {
@@ -126,7 +126,7 @@
                     }
                 }
             },
-			
+
             fotografia: {
                 container: '#fotografiaError',
                 validators: {
@@ -137,7 +137,7 @@
                     }
                 }
             },
-			
+
 			capacidad: {
                 container: '#capacidadError',
                 validators: {
@@ -149,7 +149,7 @@
                     }
                 }
             },
-			
+
 			precio: {
                 container: '#precioError',
                 validators: {
@@ -158,7 +158,7 @@
                     }
                 }
             }
-			
+
         }
     })
     .on('success.form.bv', function(e) {
@@ -170,7 +170,7 @@
         //Obtenemos los parametros enviados desde el boton.
         var button = $(event.relatedTarget);
         var id = button.data('id');
-        
+
         if(id != 'nuevo'){
             //Si no es una nueva nota, es porque tenemos que editar
             $.ajax({
@@ -179,7 +179,7 @@
                 data: { 'id': id},
                 dataType: 'json',
                 success: function(result) {
-					
+
                     $('#id').val(result.idevento);
                     $('#nombre').val(result.nombre);
                     $('#fechaInicio').val(result.fecha_inicio);
@@ -197,7 +197,7 @@
         }
 
     });
-	
+
     function submitFormEvento(){
         var form_data = new FormData();
         $("#buttonSave" ).prop("disabled", true );
@@ -207,14 +207,14 @@
         }else{
             var url = '../php/actualizarEvento.php';
         }
-            
+
         var id = $("#id").val();
         var nombre=  $("#nombre").val();
         nombre = replaceChars(nombre);
 		var fechaInicio =  $("#fechaInicio").val();
 		var fechaFin =  $("#fechaFin").val();
 		var descripcion =  $("#descripcion").val();
-        descripcion = replaceChars(descripcion);		
+        descripcion = replaceChars(descripcion);
         var fotografia =  $("#fotografia").prop('files')[0];
 		var capacidad =  $("#capacidad").val();
 		var precio =  $("#precio").val();
@@ -229,11 +229,11 @@
         form_data.append('precio', precio);
         $.ajax({
             url: url,
-            type: "POST",               
-            data:form_data,         
-            contentType: false,       
-            cache: false,              
-            processData:false,    
+            type: "POST",
+            data:form_data,
+            contentType: false,
+            cache: false,
+            processData:false,
             success: function(data){
                 if(data == 1){
                     SuccessForm();
@@ -244,14 +244,14 @@
             }
         });
     }
-    
+
     function replaceChars(string){
         return string.replace("'","''");
     }
     function SuccessForm() {
         $("#formReload").submit();
     }
-	
+
     function ErrorServer() {
         $('#success').html("<div class='alert alert-danger'>");
         $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");

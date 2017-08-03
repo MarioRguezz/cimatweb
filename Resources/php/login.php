@@ -9,5 +9,10 @@
   $rowLogin = mysqli_fetch_array($queryexecute);
   $user = new User($rowLogin[2],$rowLogin[3],$rowLogin[4],$rowLogin[1], $rowLogin[0]);
   $_SESSION['user'] =serialize($user);
-  header('Location: ../../index.php');
+  if($user->getTipo() == "administrador" ){
+    header('Location: ../../Resources/views/admin.php');
+  }else{
+    header('Location: ../../index.php');
+  }
+
 ?>

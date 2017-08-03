@@ -86,23 +86,15 @@
           <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">
             <li><a href="#">HOME</a></li>
             <li><a href="#">EVENTOS</a></li>
-            <li class='dropdown'>
-            <a class='dropdown-toggle' data-toggle='dropdown' href='#'>PAGE <span class='caret'></span></a>
-              <ul class='dropdown-menu' role='menu'>
-                <li><a  data-toggle='modal' data-target='#myModalLogin' href='#'>".$name."</a></li>
-                <li><a href='#'>BLOG DETAILS</a></li>
-              </ul>
-            </li>
               <?PHP
-              var_dump($name);
-                if(is_null($name)){
+                if(!isset($_SESSION['user'])){
                     echo "<li><a  data-toggle='modal' data-target='#myModalLogin' href='#'>INICIA SESIÓN</a></li>";
                 }else{
                   echo
                   "<li class='dropdown'> <a class='dropdown-toggle' data-toggle='dropdown' href='#'>".$name." <span class='caret'></span></a>".
                       "<ul class='dropdown-menu' role='menu'>".
                         "<li><a href='#'>Eventos</a></li>".
-                        "<li><a href='Resources\php\logout.php'>Cerrar sesión</a></li>".
+                        "<li><a href='/Resources/php/logout.php'>Cerrar sesión</a></li>".
                       "</ul>".
                     "</li>";
                 }

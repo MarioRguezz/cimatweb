@@ -93,8 +93,8 @@
                   echo
                   "<li class='dropdown'> <a class='dropdown-toggle' data-toggle='dropdown' href='#'>".$name." <span class='caret'></span></a>".
                       "<ul class='dropdown-menu' role='menu'>".
-                        "<li><a href='Resources/views/eventos.php'>Eventos</a></li>".
-                        '<li><a href="Resources/php/logout.php">Cerrar sesión</a></li>'.
+                        "<li><a href='Resources/views/eventos.php'>EVENTOS</a></li>".
+                        '<li><a href="Resources/php/logout.php">CERRAR SESIÓN</a></li>'.
                       "</ul>".
                     "</li>";
                 }

@@ -73,7 +73,6 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">
 					<li><a href="eventos.php">EVENTOS</a></li>
-					<li><a href="#">AGENDA</a></li>
           <?PHP
             if(!isset($_SESSION['user'])){
                 echo "<li><a  data-toggle='modal' data-target='#myModalLogin' href='#'>INICIA SESIÓN</a></li>";
@@ -81,7 +80,7 @@
               echo
               "<li class='dropdown'> <a class='dropdown-toggle' data-toggle='dropdown' href='#'>".$name." <span class='caret'></span></a>".
                   "<ul class='dropdown-menu' role='menu'>".
-                    '<li><a href="../php/logout.php">Cerrar sesión</a></li>'.
+                    '<li><a href="../php/logout.php">CERRAR SESIÓN</a></li>'.
                   "</ul>".
                 "</li>";
             }

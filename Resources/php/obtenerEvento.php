@@ -8,7 +8,7 @@ $miArray = array(
     "fecha_fin"=>$contenido[$fechafin],
 	"descripcion"=>$contenido[$descripcion],
 	"capacidad"=>$contenido[$capacidad],
-	"precio"=>$contenido[$precio]
+	"precio"=>$contenido[7]
     );
 echo json_encode($miArray);
 ?>

@@ -41,6 +41,10 @@
 
   </head>
   <body>
+    <?PHP
+    include 'Resources/php/conexion.php';
+    include 'Resources/php/template.php';
+    ?>
   <!-- Pre Loader -->
   <div id="aa-preloader-area">
     <div class="mu-preloader">
@@ -56,7 +60,7 @@
 
   <!-- Start header section -->
   <header id="mu-header">
-    <nav class="navbar navbar-default mu-main-navbar" role="navigation">
+    <nav class="navbar navbar-default mu-main-navbar" style="background-color: <?PHP echo $backgroundcolor?> " role="navigation">
       <div class="container">
         <div class="navbar-header">
           <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
@@ -67,7 +71,7 @@
             <span class="icon-bar"></span>
           </button>
           <!-- LOGO -->
-          <a class="navbar-brand" href="index.php"><img src="Resources/img/logo.png" alt="Logo img"></a>
+          <a class="navbar-brand" href="index.php"><img src="<?PHP echo $logo?>" alt="Logo img"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">

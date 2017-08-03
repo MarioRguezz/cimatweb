@@ -35,6 +35,12 @@
     <link href='https://fonts.googleapis.com/css?family=Prata' rel='stylesheet' type='text/css'>
 
 </head>
+<style>
+
+ html, body, .container {
+   height:100%;
+ }
+</style>
 
 <body>
 	<?php
@@ -55,7 +61,7 @@
       <span>Top</span>
     </a>
   <!-- END SCROLL TOP BUTTON -->
-  
+
   <header id="mu-header">
     <nav class="navbar navbar-default mu-main-navbar" style="background-color: <?PHP echo $backgroundcolor?> " role="navigation">
       <div class="container">
@@ -68,21 +74,31 @@
             <span class="icon-bar"></span>
           </button>
           <!-- LOGO -->
-          <a class="navbar-brand" href="admin.php"><img src="../img/<?PHP echo $logo?>" alt="Logo img"></a>
+          <a class="navbar-brand" href="admin.php"><img src="../<?PHP echo $logo?>" alt="Logo img"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">
 					<li><a href="eventos.php">EVENTOS</a></li>
-					<li><a href="#">AGENDA</a></li>
-					<li><a href="#">CESSAR SESION</a></li>
+          <?PHP
+            if(!isset($_SESSION['user'])){
+                echo "<li><a  data-toggle='modal' data-target='#myModalLogin' href='#'>INICIA SESIÓN</a></li>";
+            }else{
+              echo
+              "<li class='dropdown'> <a class='dropdown-toggle' data-toggle='dropdown' href='#'>".$name." <span class='caret'></span></a>".
+                  "<ul class='dropdown-menu' role='menu'>".
+                    '<li><a href="../php/logout.php">Cerrar sesión</a></li>'.
+                  "</ul>".
+                "</li>";
+            }
+            ?>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
   </header>
   <!-- End header section -->
-  
-	<div class="container" style="margin-top:100px">
+
+	<div class="container" style="margin-top:100px;">
 		<div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
@@ -98,19 +114,19 @@
        <div class="alert alert-success alert-dismissable">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             Su peticion se ha procesado correctamente.
-        </div> 
+        </div>
         <?php
             }elseif($_POST["saved"] == 2){
         ?>
         <div class="alert alert-danger alert-dismissable">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             El registro se ha eliminado correctamente.
-        </div>      
+        </div>
          <?php
             }
         }
         ?>
-        
+
         <!-- Main button -->
         <div class="row">
             <div class="col-lg-12 text-right">
@@ -118,7 +134,7 @@
             </div>
         </div>
         <hr>
-        
+
 		 <?php
         if($eventos){
             foreach ($eventos as $evento) {
@@ -148,7 +164,7 @@
                             ?>
                             </p>
                         <?php
-                        }  
+                        }
                         ?>
                     </div>
                 </div>
@@ -158,7 +174,7 @@
         }
         ?>
     </div>
-    
+
 	 <!-- Start Footer -->
 	<footer id="mu-footer">
 		<div class="container">
@@ -181,12 +197,12 @@
 		</div>
 	</footer>
 	<!-- End Footer -->
-	
+
 	  <script src="../js/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="../js/bootstrap.js"></script>
-  
-  
+
+
     <script src="../js/bootstrapValidator.js"></script>
     <script src="../js/bootstrap-filestyle.js"></script>
 	<script src="../js/bootstrap-datepicker.js"></script>
@@ -195,16 +211,16 @@
   <!-- Counter -->
   <script type="text/javascript" src="../js/waypoints.js"></script>
   <script type="text/javascript" src="../js/jquery.counterup.js"></script>
-  <!-- Date Picker -->}
+  <!-- Date Picker -->
   <!-- Mixit slider -->
   <script type="text/javascript" src="../js/jquery.mixitup.js"></script>
   <!-- Add fancyBox -->
   <script type="text/javascript" src="../js/jquery.fancybox.pack.js"></script>
-	
+
   <!-- Custom js -->
   <script src="../js/custom.js"></script>
 
-    
+
     <?php include("modalEvento.php");  ?>
 	<?php include("modalDelete.php");  ?>
 

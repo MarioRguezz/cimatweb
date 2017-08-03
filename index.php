@@ -80,12 +80,12 @@
             <span class="icon-bar"></span>
           </button>
           <!-- LOGO -->
-          <a class="navbar-brand" href="index.php"><img src="<?php echo $logo?>" alt="Logo img"></a>
+          <a class="navbar-brand" href="index.php"><img src="Resources/<?php echo $logo?>" alt="Logo img"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">
             <li><a href="#">HOME</a></li>
-            <li><a href="#">EVENTOS</a></li>
+            <li><a href="Resources/views/eventos.php">EVENTOS</a></li>
               <?PHP
                 if(!isset($_SESSION['user'])){
                     echo "<li><a  data-toggle='modal' data-target='#myModalLogin' href='#'>INICIA SESIÓN</a></li>";
@@ -93,7 +93,7 @@
                   echo
                   "<li class='dropdown'> <a class='dropdown-toggle' data-toggle='dropdown' href='#'>".$name." <span class='caret'></span></a>".
                       "<ul class='dropdown-menu' role='menu'>".
-                        "<li><a href='#'>Eventos</a></li>".
+                        "<li><a href='Resources/views/eventos.php'>Eventos</a></li>".
                         '<li><a href="Resources/php/logout.php">Cerrar sesión</a></li>'.
                       "</ul>".
                     "</li>";

@@ -35,6 +35,15 @@
     <?PHP
     include '../php/conexion.php';
     include '../php/template.php';
+    session_start();
+  include_once '../php/models/User.php';
+  if(isset($_SESSION['user'])){
+     $user = unserialize($_SESSION['user']);
+     $name = $user->getNombre();
+     var_dump($name);
+  } else{
+
+  }
     ?>
 <!-- Pre Loader -->
   <div id="aa-preloader-area">
@@ -59,13 +68,24 @@
             <span class="icon-bar"></span>
           </button>
           <!-- LOGO -->
-          <a class="navbar-brand" href="admin.php"><img src="../img/<?PHP echo $logo?>" alt="Logo img"></a>
+          <a class="navbar-brand" href="admin.php"><img src="../<?PHP echo $logo?>" alt="Logo img"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">
 					<li><a href="eventos.php">EVENTOS</a></li>
 					<li><a href="#">AGENDA</a></li>
-					<li><a href="#">CESSAR SESION</a></li>
+          <?PHP
+            if(!isset($_SESSION['user'])){
+                echo "<li><a  data-toggle='modal' data-target='#myModalLogin' href='#'>INICIA SESIÓN</a></li>";
+            }else{
+              echo
+              "<li class='dropdown'> <a class='dropdown-toggle' data-toggle='dropdown' href='#'>".$name." <span class='caret'></span></a>".
+                  "<ul class='dropdown-menu' role='menu'>".
+                    '<li><a href="../php/logout.php">Cerrar sesión</a></li>'.
+                  "</ul>".
+                "</li>";
+            }
+            ?>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -97,8 +117,8 @@
 	  <script src="../js/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="../js/bootstrap.js"></script>
-  
-  
+
+
     <script src="../js/bootstrapValidator.js"></script>
     <script src="../js/bootstrap-filestyle.js"></script>
 	<script src="../js/bootstrap-datepicker.js"></script>
@@ -112,11 +132,11 @@
   <script type="text/javascript" src="../js/jquery.mixitup.js"></script>
   <!-- Add fancyBox -->
   <script type="text/javascript" src="../js/jquery.fancybox.pack.js"></script>
-	
+
   <!-- Custom js -->
   <script src="../js/custom.js"></script>
 
-    
+
     <?php include("modalEvento.php");  ?>
 	<?php include("modalDelete.php");  ?>
   </body>

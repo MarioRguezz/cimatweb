@@ -1,57 +1,57 @@
-/** 
+/**
   * Template Name: SpicyX
-  * Version: 1.0  
+  * Version: 1.0
   * Template Scripts
   * Author: MarkUps
   * Author URI: http://www.markups.io/
 
   Custom JS
-  
 
-  1. FIXED NAVBAR 
+
+  1. FIXED NAVBAR
   2. TOP SLIDER
-  3. ABOUT US (SLICK SLIDER) 
+  3. ABOUT US (SLICK SLIDER)
   4. DATEPICKER
   5. SHEF SLIDER (SLICK SLIDER)
   6. TESTIMONIAL SLIDER (SLICK SLIDER)
   7. COUNTER
   8. MIXIT FILTER (FOR GALLERY)
-  9. FANCYBOX (FOR PORTFOLIO POPUP VIEW) 
+  9. FANCYBOX (FOR PORTFOLIO POPUP VIEW)
   10. MENU SMOOTH SCROLLING
   11. HOVER DROPDOWN MENU
   12. SCROLL TOP BUTTON
-  13. PRELOADER  
+  13. PRELOADER
 
-  
+
 **/
 
 jQuery(function($){
 
 
   /* ----------------------------------------------------------- */
-  /*  1. FIXED NAVBAR 
+  /*  1. FIXED NAVBAR
   /* ----------------------------------------------------------- */
-    
-    
+
+
   jQuery(window).bind('scroll', function () {
     if (jQuery(window).scrollTop() > 200) {
         jQuery('.mu-main-navbar').addClass('navbar-bg');
-        jQuery('.navbar-brand').addClass('navbar-brand-small');        
+        jQuery('.navbar-brand').addClass('navbar-brand-small');
       } else {
-          jQuery('.mu-main-navbar').removeClass('navbar-bg');          
-          jQuery('.navbar-brand').removeClass('navbar-brand-small');          
+          jQuery('.mu-main-navbar').removeClass('navbar-bg');
+          jQuery('.navbar-brand').removeClass('navbar-brand-small');
       }
   });
-  
+
   /* ----------------------------------------------------------- */
   /*  2. TOP SLIDER (SLICK SLIDER)
-  /* ----------------------------------------------------------- */    
+  /* ----------------------------------------------------------- */
 
     jQuery('.mu-top-slider').slick({
       dots: false,
       infinite: true,
       arrows: true,
-      speed: 500,     
+      speed: 500,
       autoplay: true,
       fade: true,
       cssEase: 'linear'
@@ -59,7 +59,7 @@ jQuery(function($){
 
   /* ----------------------------------------------------------- */
   /*  3. ABOUT US (SLICK SLIDER)
-  /* ----------------------------------------------------------- */      
+  /* ----------------------------------------------------------- */
 
     jQuery('.mu-abtus-slider').slick({
       dots: false,
@@ -67,19 +67,19 @@ jQuery(function($){
       arrows: false,
       speed: 500,
       autoplay: true,
-      fade: true,      
+      fade: true,
       cssEase: 'linear'
     });
 
   /* ----------------------------------------------------------- */
   /*  4. DATEPICKER
-  /* ----------------------------------------------------------- */      
+  /* ----------------------------------------------------------- */
 
     jQuery('#datepicker').datepicker();
 
   /* ----------------------------------------------------------- */
   /*  5. SHEF SLIDER (SLICK SLIDER)
-  /* ----------------------------------------------------------- */    
+  /* ----------------------------------------------------------- */
 
     jQuery('.mu-chef-nav').slick({
       dots: true,
@@ -122,16 +122,16 @@ jQuery(function($){
 
   /* ----------------------------------------------------------- */
   /*  6. TESTIMONIAL SLIDER (SLICK SLIDER)
-  /* ----------------------------------------------------------- */    
+  /* ----------------------------------------------------------- */
 
     jQuery('.mu-testimonial-slider').slick({
-      dots: true,      
+      dots: true,
       infinite: true,
       arrows: false,
       autoplay: true,
-      speed: 500,      
+      speed: 500,
       cssEase: 'linear'
-    });       
+    });
 
   /* ----------------------------------------------------------- */
   /*  7. COUNTER
@@ -143,56 +143,55 @@ jQuery(function($){
     });
 
   /* ----------------------------------------------------------- */
-  /*  8. MIXIT FILTER (FOR GALLERY) 
-  /* ----------------------------------------------------------- */  
+  /*  8. MIXIT FILTER (FOR GALLERY)
+  /* ----------------------------------------------------------- */
 
     jQuery(function(){
       jQuery('#mixit-container').mixItUp();
     });
 
   /* ----------------------------------------------------------- */
-  /*  9. FANCYBOX (FOR PORTFOLIO POPUP VIEW) 
-  /* ----------------------------------------------------------- */ 
-      
+  /*  9. FANCYBOX (FOR PORTFOLIO POPUP VIEW)
+  /* ----------------------------------------------------------- */
+
     jQuery(document).ready(function() {
       jQuery(".fancybox").fancybox();
-    });  
+    });
 
   /* ----------------------------------------------------------- */
   /*  10. MENU SMOOTH SCROLLING
-  /* ----------------------------------------------------------- */ 
+  /* ----------------------------------------------------------- */
 
     //MENU SCROLLING WITH ACTIVE ITEM SELECTED
 
       // Cache selectors
-      var lastId,
-      topMenu = $(".mu-main-nav"),
-      topMenuHeight = topMenu.outerHeight()+13,
+    //  var lastId,
+//      //topMenuHeight = topMenu.outerHeight()+13,
       // All list items
-      menuItems = topMenu.find("a"),
+    //  menuItems = topMenu.find("a"),
       // Anchors corresponding to menu items
-      scrollItems = menuItems.map(function(){
+      /*scrollItems = menuItems.map(function(){
         var item = $($(this).attr("href"));
         if (item.length) { return item; }
-      });
+      });*/
 
       // Bind click handler to menu items
       // so we can get a fancy scroll animation
-      menuItems.click(function(e){
+  /*    menuItems.click(function(e){
         var href = $(this).attr("href"),
             offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+32;
-        jQuery('html, body').stop().animate({ 
+        jQuery('html, body').stop().animate({
             scrollTop: offsetTop
-        }, 1500);           
-         jQuery('.navbar-collapse').removeClass('in');  
+        }, 1500);
+         jQuery('.navbar-collapse').removeClass('in');
         e.preventDefault();
-      });
+      });*/
 
       // Bind to scroll
-      jQuery(window).scroll(function(){
+  /*    jQuery(window).scroll(function(){
          // Get container scroll position
          var fromTop = $(this).scrollTop()+topMenuHeight;
-         
+
          // Get id of current scroll item
          var cur = scrollItems.map(function(){
            if ($(this).offset().top < fromTop)
@@ -201,20 +200,20 @@ jQuery(function($){
          // Get the id of the current element
          cur = cur[cur.length-1];
          var id = cur && cur.length ? cur[0].id : "";
-         
+
          if (lastId !== id) {
              lastId = id;
              // Set/remove active class
              menuItems
                .parent().removeClass("active")
                .end().filter("[href=#"+id+"]").parent().addClass("active");
-         }           
-      })
-  
+         }
+      })*/
+
   /* ----------------------------------------------------------- */
   /*  11. HOVER DROPDOWN MENU
-  /* ----------------------------------------------------------- */ 
-  
+  /* ----------------------------------------------------------- */
+
   // for hover dropdown menu
     jQuery('ul.nav li.dropdown').hover(function() {
       jQuery(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(200);
@@ -222,7 +221,7 @@ jQuery(function($){
       jQuery(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(200);
     });
 
-    
+
   /* ----------------------------------------------------------- */
   /*  12. SCROLL TOP BUTTON
   /* ----------------------------------------------------------- */
@@ -236,22 +235,21 @@ jQuery(function($){
         jQuery('.scrollToTop').fadeOut();
       }
     });
-     
+
     //Click event to scroll to top
 
     jQuery('.scrollToTop').click(function(){
       jQuery('html, body').animate({scrollTop : 0},800);
       return false;
     });
-  
+
   /* ----------------------------------------------------------- */
   /*  13. PRELOADER
   /* ----------------------------------------------------------- */
 
-   jQuery(window).load(function() { // makes sure the whole site is loaded      
-      jQuery('#aa-preloader-area').delay(300).fadeOut('slow'); // will fade out      
+   jQuery(window).load(function() { // makes sure the whole site is loaded
+      jQuery('#aa-preloader-area').delay(300).fadeOut('slow'); // will fade out
     })
-   
-  
-});
 
+
+});

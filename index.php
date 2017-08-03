@@ -1375,7 +1375,11 @@
     </div>
   </section>
   <!-- End Contact section -->
-
+<style>
+#map {
+       height: 100%;
+     }
+</style>
   <!-- Start Map section -->
   <section id="mu-map">
     <div id="map"  width="100%" height="100%" frameborder="0"></div>

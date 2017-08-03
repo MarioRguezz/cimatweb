@@ -1,5 +1,4 @@
 <?PHP
-//error_reporting(0);
 
 session_start();
 function  conect($host = "localhost", $user = "root", $psw = "", $db = "ametriz"){
@@ -12,11 +11,6 @@ function  conect($host = "localhost", $user = "root", $psw = "", $db = "ametriz"
 
 function desconectarBD($con){
 	mysqli_close($con);
-}
-
-function logout(){
-//  unset($_SESSION['tipoP']);
-  session_destroy();
 }
 
 

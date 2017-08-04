@@ -338,10 +338,6 @@
                   </div>
                 </li>
                 <li>
-                    <a mp-mode="dftl" href="https://www.mercadopago.com/mlm/checkout/start?pref_id=19855528-f6ffd5da-77a2-488e-adba-bb2cb5aa8657" name="MP-payButton" class='blue-ar-l-rn-none'>Pagar</a>
-<script type="text/javascript">
-(function(){function $MPC_load(){window.$MPC_loaded !== true && (function(){var s = document.createElement("script");s.type = "text/javascript";s.async = true;s.src = document.location.protocol+"//secure.mlstatic.com/mptools/render.js";var x = document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s, x);window.$MPC_loaded = true;})();}window.$MPC_loaded !== true ? (window.attachEvent ?window.attachEvent('onload', $MPC_load) : window.addEventListener('load', $MPC_load, false)) : null;})();
-</script>
                   <div class="mu-single-chef">
                     <figure class="mu-single-chef-img">
                       <img src="Resources/img/chef/chef-2.jpg" height="250" alt="chef img">
@@ -382,7 +378,7 @@
                     </figure>
                     <div class="mu-single-chef-info">
                       <h4>Marty Fukuda
-                      
+
                       </h4>
                       <span>Secretarío General</span>
                     </div>
@@ -401,7 +397,7 @@
                     </figure>
                     <div class="mu-single-chef-info">
                       <h4>Dr. Christian Signoret
-                      
+
                       </h4>
                       <span>Secretario Tesorero</span>
                     </div>
@@ -437,7 +433,7 @@
                     </figure>
                     <div class="mu-single-chef-info">
                       <h4>Dr. Noel León Rovira
-                      
+
                       </h4>
                       <span>Presidente Honorario</span>
                     </div>
@@ -456,7 +452,7 @@
                     </figure>
                     <div class="mu-single-chef-info">
                       <h4> Edgardo Córdoba
-                      
+
                       </h4>
                       <span>Vicepresidente Honorario</span>
                     </div>

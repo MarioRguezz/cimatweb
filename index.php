@@ -1,3 +1,22 @@
+    <?PHP
+    
+    include 'Resources/php/conexion.php';
+    include 'Resources/php/template.php';
+  include 'Resources/php/dbManejador.php';
+    
+  include_once 'Resources/php/models/User.php';
+  if(isset($_SESSION['user'])){
+     $user = unserialize($_SESSION['user']);
+     $name = $user->getNombre();
+     var_dump($name);
+  } else{
+
+  }
+
+  $eventos = eventosInformacionLimit();
+
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -41,23 +60,7 @@
 
   </head>
   <body>
-    <?PHP
-    include 'Resources/php/conexion.php';
-    include 'Resources/php/template.php';
-	include 'Resources/php/dbManejador.php';
-    session_start();
-  include_once 'Resources/php/models/User.php';
-  if(isset($_SESSION['user'])){
-     $user = unserialize($_SESSION['user']);
-     $name = $user->getNombre();
-     var_dump($name);
-  } else{
 
-  }
-
-	$eventos = eventosInformacionLimit();
-
-    ?>
   <!-- Pre Loader -->
   <div id="aa-preloader-area">
     <div class="mu-preloader">
@@ -275,7 +278,7 @@
 							</figure>
 							<div class="mu-news-single-content">
 								<ul class="mu-meta-nav">
-									<li><?php echo $evento[$fechainicio];?></li>
+									<li><?php echo $evento[$fechainicio];?>   -   <?php echo $evento[$fechafin];?></li>
 								</ul>
 								<p><?php echo $evento[$descripcion];?></p>
 								<div class="mu-news-single-bottom">

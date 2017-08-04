@@ -31,37 +31,37 @@ function eventosInformacion(){
 	}
 }
 
-function eventosInformacionprivada(){
 
-	include("conexion.php");
-	$mysqli = conect();
-  $array = array();
-include_once '../php/models/User.php';
-if(isset($_SESSION['user'])){
- $user = unserialize($_SESSION['user']);
- $idusuario = $user->getidUsuario();
-} else{
-
+function programaInformacion($evento){
+		$mysqli = conect();
+    if(!$mysqli->connect_error){
+		$query = "select * from programa where idevento='$evento'";
+        $res = $mysqli->query($query);
+    }
 }
-	if(!$mysqli->connect_error){
-		// WHERE iidusuario = '".$idusuario . "'
-$query = "SELECT * FROM usuario_evento";
-$queryexecute  = mysqli_query($mysqli,$query);
-var_dump($query);
-$rowLogin = mysqli_fetch_array($queryexecute);
-var_dump(count($rowLogin));
-  for($i =0; $i< count($rowLogin); $i++){
-		//var_dump($rowLogin[0]);
+function eventosInformacionprivada(){
+}
 
-	}
-	/*
-foreach($rowLogin as $row){
-	var_dump($row[0]);
-	$query2 = "SELECT * FROM eventos  WHERE idevento = '".$row[2] . "'";
-	$queryexecute2 = mysqli_query($mysqli,$query2);
-	$rowLogin2 = mysqli_fetch_array($queryexecute2);
-	array_push($array,$rowLogin2);
-}*/
+function eventosParticipacion($idusuario){
+
+	$mysqli = conect();
+	if(!$mysqli->connect_error){
+		$query = "SELECT e.* FROM eventos e LEFT JOIN usuario_evento ue
+				 ON e.idevento = ue.idevento LEFT JOIN usuarios u ON u.idusuario = ue.iidusuario
+				 WHERE u.idusuario = '$idusuario'";
+		$res = $mysqli->query($query);
+
+		if($res){
+			$NF = $res->num_rows;
+			for($i=0; $i <$NF; $i++){
+				$arreglo[$i] = $res->fetch_row();
+			}
+		}
+		$res->close();
+
+        $mysqli->close();
+        return $arreglo;
+        print_r($arreglo);
 		$mysqli->close();
 		return $arreglo;
 	}else{
@@ -76,6 +76,7 @@ function eventosInformacionLimit(){
 	if(!$mysqli->connect_error){
 		$query = "SELECT * FROM eventos ORDER BY fecha_inicio ASC LIMIT 4";
 		$res = $mysqli->query($query);
+
 		if($res){
 			$NF = $res->num_rows;
 			for($i=0; $i <$NF; $i++){
@@ -83,12 +84,19 @@ function eventosInformacionLimit(){
 			}
 		}
 		$res->close();
+
+        $mysqli->close();
+        return $arreglo;
+        print_r($arreglo);
+
+
 		$mysqli->close();
 		return $arreglo;
 	}else{
 		return "sin conexion";
 	}
 }
+
 
 
 function obtenerEventoInfo(){
@@ -107,6 +115,7 @@ function obtenerEventoInfo(){
 	}
 }
 
+
 function evento($idevento){
 	echo $idevento." sf";
 	$mysqli = conect();
@@ -121,6 +130,7 @@ function evento($idevento){
 		return "sin conexion";
 	}
 }
+
 
 function actualizarEvento(){
 	include("conexion.php");

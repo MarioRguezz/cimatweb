@@ -21,7 +21,7 @@
 <form style="display: hidden" method="POST" id="formReloadDelete">
     <input type="hidden" id="saved" name="saved" value="2"/>
 </form>
-    
+
 <script>
     //OBTENEMOS PARAMETROS
     $('#confirm-delete').on('show.bs.modal', function (event) {
@@ -30,13 +30,13 @@
         var id = button.data('delete');
         $('#idEventoDelete').val(id);
     });
-    
+
     //AL DAR CLICK EN DELETE
     $("#deleteForm").submit(function(event){
         event.preventDefault();
         submitFormDelete();
     });
-    
+
     //PARA PROCESAR EL DELETE
     function submitFormDelete(){
         var form_data = new FormData();
@@ -44,12 +44,12 @@
         var idEventoDelete = $("#idEventoDelete").val();
         form_data.append('idEventoDelete', idEventoDelete);
         $.ajax({
-            url: "../php/eliminarEvento.php",
-            type: "POST",               
-            data:form_data,         
-            contentType: false,       
-            cache: false,              
-            processData:false,    
+            url: "../php/eliminarCupon.php",
+            type: "POST",
+            data:form_data,
+            contentType: false,
+            cache: false,
+            processData:false,
             success: function(data){
                 $("#formReloadDelete").submit();
             }

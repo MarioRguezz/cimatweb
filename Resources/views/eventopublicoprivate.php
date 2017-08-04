@@ -45,14 +45,13 @@
 <body>
 	<?php
 	include("../php/dbManejador.php");
-	$eventos = eventosInformacion();
+	$eventos = eventosInformacionprivada();
   include '../php/template.php';
     session_start();
  include_once '../php/models/User.php';
 if(isset($_SESSION['user'])){
    $user = unserialize($_SESSION['user']);
    $name = $user->getNombre();
-   var_dump($name);
 } else{
 
 }
@@ -87,8 +86,7 @@ if(isset($_SESSION['user'])){
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">
-					<li><a href="admin.php">HOME</a></li>
-          <li><a href="cupon.php">CUPON</a></li>
+					<li><a href="../../">HOME</a></li>
           <?PHP
             if(!isset($_SESSION['user'])){
                 echo "<li><a  data-toggle='modal' data-target='#myModalLogin' href='#'>INICIA SESIÓN</a></li>";
@@ -136,13 +134,6 @@ if(isset($_SESSION['user'])){
             }
         }
         ?>
-
-        <!-- Main button -->
-        <div class="row">
-            <div class="col-lg-12 text-right">
-                <button type="button" class="mu-send-btn" data-toggle="modal" data-target="#evento-modal" data-id="<?php echo "nuevo"?>">Nuevo Evento</button>
-            </div>
-        </div>
         <hr>
 
 		 <?php
@@ -151,21 +142,8 @@ if(isset($_SESSION['user'])){
                 ?>
                 <div class="row">
                     <!-- Botones de funcion -->
-                    <div class="col-lg-12 text-right">
-<<<<<<< HEAD
-                          <form action="programa.php" method="post">
-                            <a href="javascript:;" class="btn btn-xs btn-primary" onclick="parentNode.submit();">Programa</a>
-                           <input type="hidden" name="idevento" value="<?php echo $evento[$idevento];?>"/>
-                        </form>
-
-                        <button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#evento-modal" data-id="<?php echo $evento[$idevento];?>">Editar</button>
-                        <button type="button" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#confirm-delete" data-delete="<?php echo $evento[$idevento];?>">Eliminar</button>
-=======
-                        <button type="button" class="mu-send-btn" data-toggle="modal" data-target="#evento-modal" data-id="<?php echo $evento[$idevento];?>">Editar</button>
-                        <button type="button" class="mu-send-btn" data-toggle="modal" data-target="#confirm-delete" data-delete="<?php echo $evento[$idevento];?>">Eliminar</button>
->>>>>>> 6e6f066b2ee1d2fc299acc088ea4e38f239b6072
-                    </div>
                     <!-- Imagen  -->
+                    	<div>Fecha: <?php echo $evento[$fechainicio];?></div>
                     <div class="col-md-3">
                         <img class="img-responsive img-hover" src="../imagenes/<?php echo $evento[$foto];?>" alt="">
                     </div>
@@ -187,6 +165,10 @@ if(isset($_SESSION['user'])){
                         }
                         ?>
                     </div>
+                    <form action="../views/evento.php" method="post">
+            					<a href="javascript:;" class="mu-readmore-btn" onclick="parentNode.submit();">Leer M&aacute;s...</a>
+            					<input type="hidden" name="idevento" id="idevento" value="<?php echo $evento[$idevento];?>"/>
+            				</form>
                 </div>
                 <hr>
                 <?php
@@ -241,9 +223,6 @@ if(isset($_SESSION['user'])){
   <script src="../js/custom.js"></script>
 
 
-    <?php include("modalEvento.php");  ?>
-	  <?php include("modalDelete.php");  ?>
-   
 
 </body>
 

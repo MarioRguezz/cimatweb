@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin | Home</title>
+    <title>Admin | Cupon</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
@@ -33,14 +33,14 @@
   </head>
   <body>
     <?PHP
-    include '../php/conexion.php';
+    include("../php/dbManejador2.php");
+  	$eventos = eventosInformacion();
     include '../php/template.php';
-    session_start();
-  include_once '../php/models/User.php';
+      session_start();
+   include_once '../php/models/User.php';
   if(isset($_SESSION['user'])){
      $user = unserialize($_SESSION['user']);
      $name = $user->getNombre();
-     var_dump($name);
   } else{
 
   }
@@ -93,41 +93,76 @@
   </header>
 
 
-  <!-- Start Chef Section -->
-  <section id="mu-chef">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="mu-chef-area">
-            <div class="mu-title">
-              <span class="mu-subtitle">Bienvenido</span>
-              <h2> <?PHP echo $name?></h2>
-              <i class="fa fa-spoon"></i>
-              <span class="mu-title-bar"></span>
-            </div>
-              <div class="mu-chef-content">
-                <form action="../php/changeTemplate.php"   method="post" enctype="multipart/form-data" class=" mu-contact-form">
-                <div class="form-group">
-                  <label for="name">Selecciona el color de tu barra de menú</label>
-                  <input style="max-width:200px;" name="barracolor" id="barracolor" required  type="color" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="name">Selecciona el logo</label>
-                    <label for="fotografia" class="form-control-label">Fotograf&iacutea:</label>
-                    <input type="file" accept="image/x-png,image/gif,image/jpeg" required class="filestyle" data-buttonBefore="true" data-buttonText="Buscar Fotografía" id="fotografia" name="fotografia">
-                    <span class="help-block" id="fotografiaError" />
-               </div>
-               <button type="submit" class="mu-send-btn">Cambiar</button>
-              </form>
+
+
+
+
+  	<div class="container" style="margin-top:100px;">
+  		<div class="row">
+              <div class="col-lg-12">
+                  <h1 class="page-header">
+  					CUPONES
+                  </h1>
               </div>
-
-
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Chef Section -->
+          <!-- Alertas -->
+          <?php
+          if (isset($_POST["saved"])) {
+              if($_POST["saved"] == 1){
+          ?>
+         <div class="alert alert-success alert-dismissable">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              Su peticion se ha procesado correctamente.
+          </div>
+          <?php
+              }elseif($_POST["saved"] == 2){
+          ?>
+          <div class="alert alert-danger alert-dismissable">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              El registro se ha eliminado correctamente.
+          </div>
+           <?php
+              }
+          }
+          ?>
+
+          <!-- Main button -->
+          <div class="row">
+              <div class="col-lg-12 text-right">
+                  <button type="button" class="mu-send-btn" data-toggle="modal" data-target="#evento-modal" data-id="<?php echo "nuevo"?>">Nuevo Cupón</button>
+              </div>
+          </div>
+          <hr>
+
+  		 <?php
+          if($eventos){
+              foreach ($eventos as $evento) {
+                  ?>
+                  <div class="row">
+                      <!-- Botones de funcion -->
+                      <div class="col-lg-12 text-right">
+                          <button type="button" class="mu-send-btn" data-toggle="modal" data-target="#evento-modal" data-id="<?php echo $evento[$idcupon];?>">Editar</button>
+                          <button type="button" class="mu-send-btn" data-toggle="modal" data-target="#confirm-delete" data-delete="<?php echo $evento[$idcupon];?>">Eliminar</button>
+                      </div>
+                      <!-- Resto de contenido -->
+                      <div class="col-md-12">
+                          <h3>
+                            <?php echo $evento[$nombre];?>
+                          </h3>
+                              <p>
+                              <?php
+                              echo $evento[$descuento];
+                              ?>
+                              </p>
+                      </div>
+                  </div>
+                  <hr>
+                  <?php
+              }
+          }
+          ?>
+
+
 
   <!-- Start Footer -->
   <footer id="mu-footer" style="margin-top:100px">
@@ -174,7 +209,7 @@
   <script src="../js/custom.js"></script>
 
 
-    <?php include("modalEvento.php");  ?>
-	<?php include("modalDelete.php");  ?>
+    <?php include("modalEvento2.php");  ?>
+	<?php include("modalDelete2.php");  ?>
   </body>
 </html>

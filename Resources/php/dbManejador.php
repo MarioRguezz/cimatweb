@@ -38,31 +38,32 @@ function programaInformacion($evento){
 		$query = "select * from programa where idevento='$evento'";
         $res = $mysqli->query($query);
     }
+}
 function eventosInformacionprivada(){
 
 	include("conexion.php");
 	$mysqli = conect();
-  $array = array();
-include_once '../php/models/User.php';
-if(isset($_SESSION['user'])){
- $user = unserialize($_SESSION['user']);
- $idusuario = $user->getidUsuario();
-} else{
+  	$array = array();
+	include_once '../php/models/User.php';
+	if(isset($_SESSION['user'])){
+ 	$user = unserialize($_SESSION['user']);
+ 	$idusuario = $user->getidUsuario();
+	} else{
 
-}
+	}
 	if(!$mysqli->connect_error){
-$query = "SELECT * FROM usuario_evento WHERE iidusuario = '".$idusuario . "'";
-$queryexecute  = mysqli_query($mysqli,$query);
+	$query = "SELECT * FROM usuario_evento WHERE iidusuario = '".$idusuario . "'";
+	$queryexecute  = mysqli_query($mysqli,$query);
 
-$rowLogin = mysqli_fetch_array($queryexecute);
+	$rowLogin = mysqli_fetch_array($queryexecute);
 
-foreach($rowLogin as $row){
+	foreach($rowLogin as $row){
 	var_dump($row[0]);
 	$query2 = "SELECT * FROM eventos  WHERE idevento = '".$row[2] . "'";
 	$queryexecute2 = mysqli_query($mysqli,$query2);
 	$rowLogin2 = mysqli_fetch_array($queryexecute2);
 	array_push($array,$rowLogin2);
-}
+	}
 		$mysqli->close();
 		return $arreglo;
 	}else{
@@ -77,7 +78,7 @@ function eventosInformacionLimit(){
 	if(!$mysqli->connect_error){
 		$query = "SELECT * FROM eventos ORDER BY fecha_inicio ASC LIMIT 4";
 		$res = $mysqli->query($query);
->>>>>>> 6e6f066b2ee1d2fc299acc088ea4e38f239b6072
+
 		if($res){
 			$NF = $res->num_rows;
 			for($i=0; $i <$NF; $i++){
@@ -85,16 +86,12 @@ function eventosInformacionLimit(){
 			}
 		}
 		$res->close();
-<<<<<<< HEAD
 		
         $mysqli->close();
         return $arreglo;
         print_r($arreglo);
-    }
+    
 
-}
-
-=======
 		$mysqli->close();
 		return $arreglo;
 	}else{
@@ -103,7 +100,7 @@ function eventosInformacionLimit(){
 }
 
 
->>>>>>> 6e6f066b2ee1d2fc299acc088ea4e38f239b6072
+
 function obtenerEventoInfo(){
 
 	include("conexion.php");
@@ -120,9 +117,7 @@ function obtenerEventoInfo(){
 	}
 }
 
-<<<<<<< HEAD
 
-=======
 function evento($idevento){
 	echo $idevento." sf";
 	$mysqli = conect();
@@ -137,7 +132,7 @@ function evento($idevento){
 		return "sin conexion";
 	}
 }
->>>>>>> 6e6f066b2ee1d2fc299acc088ea4e38f239b6072
+
 
 function actualizarEvento(){
 	include("conexion.php");

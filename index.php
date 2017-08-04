@@ -44,6 +44,7 @@
     <?PHP
     include 'Resources/php/conexion.php';
     include 'Resources/php/template.php';
+	include 'Resources/php/dbManejador.php';
     session_start();
   include_once 'Resources/php/models/User.php';
   if(isset($_SESSION['user'])){
@@ -53,6 +54,9 @@
   } else{
 
   }
+  
+	$eventos = eventosInformacionLimit();
+	
     ?>
   <!-- Pre Loader -->
   <div id="aa-preloader-area">
@@ -257,43 +261,43 @@
             <div class="mu-latest-news-content">
               <div class="row">
                 <!-- start single blog -->
-                <div class="col-md-6">
-                  <article class="mu-news-single">
-                    <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, distinctio!</a></h3>
-                    <figure class="mu-news-img">
-                      <a href="#"><img src="Resources/img/news/1.jpg" alt="img"></a>
-                    </figure>
-                    <div class="mu-news-single-content">
-                      <ul class="mu-meta-nav">
-                        <li>By Admin</li>
-                        <li>Date: May 10 2016</li>
-                      </ul>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio est quaerat magnam exercitationem voluptas, voluptatem sed quam ab laborum voluptatum tempore dolores itaque, molestias vitae.</p>
-                      <div class="mu-news-single-bottom">
-                        <a href="Resources/views/blog-single.html" class="mu-readmore-btn">Read More</a>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <!-- start single blog -->
-                <div class="col-md-6">
-                  <article class="mu-news-single">
-                    <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, distinctio!</a></h3>
-                    <figure class="mu-news-img">
-                      <a href="#"><img src="Resources/img/news/2.jpg" alt="img"></a>
-                    </figure>
-                    <div class="mu-news-single-content">
-                      <ul class="mu-meta-nav">
-                        <li>By Admin</li>
-                        <li>Date: May 10 2016</li>
-                      </ul>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio est quaerat magnam exercitationem voluptas, voluptatem sed quam ab laborum voluptatum tempore dolores itaque, molestias vitae.</p>
-                      <div class="mu-news-single-bottom">
-                        <a href="Resources/views/blog-single.html" class="mu-readmore-btn">Read More</a>
-                      </div>
-                    </div>
-                  </article>
-                </div>
+				
+				 <?php
+				if($eventos){
+					foreach ($eventos as $evento) {
+					?>
+					
+					<div class="col-md-6">
+						<article class="mu-news-single">
+							<h3><a href="#"><?php echo $evento[$nombre];?></a></h3>
+							<figure class="mu-news-img">
+					<img src="Resources/imagenes/<?php echo $evento[$foto];?>" height="180" alt="img">
+							</figure>
+							<div class="mu-news-single-content">
+								<ul class="mu-meta-nav">
+									<li><?php echo $evento[$fechainicio];?></li>
+								</ul>
+								<p><?php echo $evento[$descripcion];?></p>
+								<div class="mu-news-single-bottom">
+				
+				<form action="Resources/views/evento.php" method="post">
+					<a href="javascript:;" class="mu-readmore-btn" onclick="parentNode.submit();">Leer M&aacute;s...</a>
+					<input type="hidden" name="idevento" id="idevento" value="<?php echo $evento[$idevento];?>"/>
+				</form>
+				
+				
+								</div>
+							</div>
+						</article>
+					</div>
+					
+                <?php
+            }
+        }
+        ?>
+				
+
+
               </div>
               <!-- Start brows more btn -->
               <a href="Resources/views/blog-archive.html" class="mu-browsmore-btn">Ver todos</a>

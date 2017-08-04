@@ -117,10 +117,15 @@ function obtenerEventoInfo(){
 
 
 function evento($idevento){
-	echo $idevento." sf";
 	$mysqli = conect();
 	if(!$mysqli->connect_error){
-		$query = "SELECT * FROM eventos WHERE idevento = '$idevento'";
+		
+		
+	$query = "SELECT e.*,COUNT(ue.idusuario_evento) AS participantes
+			FROM eventos e
+			LEFT JOIN usuario_evento ue
+			ON e.idevento = ue.idevento
+			WHERE e.idevento = '$idevento'";
 		$res = $mysqli->query($query);
         $datos = $res->fetch_row();
 		$res->close();
@@ -187,6 +192,24 @@ function insertarEvento(){
             $queryImage = "UPDATE `eventos` SET `foto` = '$fotografia' WHERE `idevento` = '$id'";
             $resultImage = $mysqli -> query($queryImage);
         }
+        $mysqli->close();
+        return $result;
+    }else{
+        return 5;
+    }
+}
+
+function inscribirEvento(){
+		include("conexion.php");
+	$mysqli = conect();
+    if(!$mysqli->connect_error){
+		$idevento = $_POST['idevento'];
+        $idusuario = $_POST['idusuario'];
+
+		$query = "INSERT INTO `usuario_evento` (`iidusuario`,`idevento`,`estatus`)
+		VALUES ('$idusuario','$idevento','0')";
+        $result = $mysqli -> query($query);
+        $id = $mysqli -> insert_id;
         $mysqli->close();
         return $result;
     }else{

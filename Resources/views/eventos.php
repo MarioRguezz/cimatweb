@@ -187,27 +187,7 @@ if(isset($_SESSION['user'])){
         ?>
     </div>
 
-	 <!-- Start Footer -->
-	<footer id="mu-footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="mu-footer-area">
-						<div class="mu-footer-social">
-							<a href="https://www.facebook.com/pg/ametriz/"><span class="fa fa-facebook"></span></a>
-							<a href="#"><span class="fa fa-twitter"></span></a>
-							<a href="#"><span class="fa fa-google-plus"></span></a>
-							<a href="#"><span class="fa fa-linkedin"></span></a>
-							<a href="#"><span class="fa fa-youtube"></span></a>
-						</div>
-						<div class="mu-footer-copyright">
-							<p>Powered by <a rel="nofollow" href="#">CIMAT MSI GEN.2017</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
+
 	<!-- End Footer -->
 
 	  <script src="../js/jquery.min.js"></script>

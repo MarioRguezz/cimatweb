@@ -40,35 +40,6 @@ function programaInformacion($evento){
     }
 }
 function eventosInformacionprivada(){
-
-	include("conexion.php");
-	$mysqli = conect();
-  	$array = array();
-	include_once '../php/models/User.php';
-	if(isset($_SESSION['user'])){
- 	$user = unserialize($_SESSION['user']);
- 	$idusuario = $user->getidUsuario();
-	} else{
-
-	}
-	if(!$mysqli->connect_error){
-	$query = "SELECT * FROM usuario_evento WHERE iidusuario = '".$idusuario . "'";
-	$queryexecute  = mysqli_query($mysqli,$query);
-
-	$rowLogin = mysqli_fetch_array($queryexecute);
-
-	foreach($rowLogin as $row){
-	var_dump($row[0]);
-	$query2 = "SELECT * FROM eventos  WHERE idevento = '".$row[2] . "'";
-	$queryexecute2 = mysqli_query($mysqli,$query2);
-	$rowLogin2 = mysqli_fetch_array($queryexecute2);
-	array_push($array,$rowLogin2);
-	}
-		$mysqli->close();
-		return $arreglo;
-	}else{
-		return "sin conexion";
-	}
 }
 
 function eventosParticipacion($idusuario){
@@ -87,12 +58,10 @@ function eventosParticipacion($idusuario){
 			}
 		}
 		$res->close();
-		
+
         $mysqli->close();
         return $arreglo;
         print_r($arreglo);
-    
-
 		$mysqli->close();
 		return $arreglo;
 	}else{
@@ -115,11 +84,11 @@ function eventosInformacionLimit(){
 			}
 		}
 		$res->close();
-		
+
         $mysqli->close();
         return $arreglo;
         print_r($arreglo);
-    
+
 
 		$mysqli->close();
 		return $arreglo;

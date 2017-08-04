@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin | Home</title>
+    <title>Ametriz | Usuario</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
@@ -30,6 +30,15 @@
     <link href='https://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Prata' rel='stylesheet' type='text/css'>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
   </head>
   <body>
     <?PHP
@@ -45,7 +54,7 @@
 
   }
     ?>
-<!-- Pre Loader -->
+  <!-- Pre Loader -->
   <div id="aa-preloader-area">
     <div class="mu-preloader">
       <img src="../img/gif.png" alt=" loader img">
@@ -56,8 +65,11 @@
       <i class="fa fa-angle-up"></i>
       <span>Top</span>
     </a>
+  <!-- END SCROLL TOP BUTTON -->
+
+  <!-- Start header section -->
   <header id="mu-header">
-    <nav class="navbar navbar-default mu-main-navbar" style="background-color: <?PHP echo $backgroundcolor?> " role="navigation">
+    <nav class="navbar navbar-default mu-main-navbar" style="background-color: <?php echo $backgroundcolor?> " role="navigation">
       <div class="container">
         <div class="navbar-header">
           <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
@@ -68,69 +80,83 @@
             <span class="icon-bar"></span>
           </button>
           <!-- LOGO -->
-          <a class="navbar-brand" href="admin.php"><img src="../<?PHP echo $logo?>" alt="Logo img"></a>
+          <a class="navbar-brand" href="index.php"><img src="../<?php echo $logo?>" alt="Logo img"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">
-					<li><a href="../views/eventos.php">EVENTOS</a></li>
-          <li><a href="../views/cupon.php">CUPON</a></li>
-          <?PHP
-            if(!isset($_SESSION['user'])){
-                echo "<li><a  data-toggle='modal' data-target='#myModalLogin' href='#'>INICIA SESIÓN</a></li>";
-            }else{
-              echo
-              "<li class='dropdown'> <a class='dropdown-toggle' data-toggle='dropdown' href='#'>".$name." <span class='caret'></span></a>".
-                  "<ul class='dropdown-menu' role='menu'>".
-                    '<li><a href="../php/logout.php">CERRAR SESIÓN</a></li>'.
-                  "</ul>".
-                "</li>";
-            }
-            ?>
+            <li><a href="../../">HOME</a></li>
+            <li><a href="../views/eventos.php">EVENTOS</a></li>
+              <?PHP
+                if(!isset($_SESSION['user'])){
+                    echo "<li><a  data-toggle='modal' data-target='#myModalLogin' href='#'>INICIA SESIÓN</a></li>";
+                }else{
+                  echo
+                  "<li class='dropdown'> <a class='dropdown-toggle' data-toggle='dropdown' href='#'>".$name." <span class='caret'></span></a>".
+                      "<ul class='dropdown-menu' role='menu'>".
+                        "<li><a href='#'>EVENTOS</a></li>".
+                        '<li><a href="../php/logout.php">CERRAR SESIÓN</a></li>'.
+                      "</ul>".
+                    "</li>";
+                }
+              ?>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
   </header>
+  <!-- End header section -->
 
 
-  <!-- Start Chef Section -->
-  <section id="mu-chef">
+  <section id="mu-blog-banner">
+    <div class="container">
+      <div class="mu-blog-banner-area">
+        <h1 style="color:#FFF">Únete</h1>
+          <h2 style="color:#3498db" class="active">Creación de usuario</h2>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Start Contact section -->
+  <section id="mu-contact">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <div class="mu-chef-area">
-            <div class="mu-title">
-              <span class="mu-subtitle">Bienvenido</span>
-              <h2> <?PHP echo $name?></h2>
-              <i class="fa fa-spoon"></i>
-              <span class="mu-title-bar"></span>
-            </div>
-              <div class="mu-chef-content">
-                <form action="../php/changeTemplate.php"   method="post" enctype="multipart/form-data" class=" mu-contact-form">
-                <div class="form-group">
-                  <label for="name">Selecciona el color de tu barra de menú</label>
-                  <input style="max-width:200px;" name="barracolor" id="barracolor" required  type="color" class="form-control">
+          <div class="mu-contact-area">
+            <div class="mu-contact-content">
+              <div class="row">
+                <div class="col-md-12">
+                    <form action="../php/addUser.php"   method="post" enctype="multipart/form-data" class=" mu-contact-form">
+                      <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" class="form-control" id="name" name="name" required placeholder="Nombre">
+                      </div>
+                      <div class="form-group">
+                        <label for="subject">Apellido</label>
+                        <input type="text" class="form-control" id="lastname" name="lastname" required  placeholder="Asunto">
+                      </div>
+                      <div class="form-group">
+                        <label for="email">Correo</label>
+                        <input type="email" class="form-control" id="email" name="email" required placeholder="Email">
+                      </div>
+                      <div class="form-group">
+                        <label for="email">Contraseña</label>
+                        <input type="password" class="form-control" id="password" name="password"  required placeholder="Contraseña">
+                      </div>
+                      <button type="submit" class="mu-send-btn">Registrar</button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="name">Selecciona el logo</label>
-                    <label for="fotografia" class="form-control-label">Fotograf&iacutea:</label>
-                    <input type="file" accept="image/x-png,image/gif,image/jpeg" required class="filestyle" data-buttonBefore="true" data-buttonText="Buscar Fotografía" id="fotografia" name="fotografia">
-                    <span class="help-block" id="fotografiaError" />
-               </div>
-               <button type="submit" class="mu-send-btn">Cambiar</button>
-              </form>
               </div>
-
-
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- End Chef Section -->
+  <!-- End Contact section -->
 
   <!-- Start Footer -->
-  <footer id="mu-footer" style="margin-top:100px">
+  <footer id="mu-footer">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -151,20 +177,18 @@
     </div>
   </footer>
   <!-- End Footer -->
-	  <script src="../js/jquery.min.js"></script>
+
+  <!-- jQuery library -->
+  <script src="../js/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="../js/bootstrap.js"></script>
-
-
-    <script src="../js/bootstrapValidator.js"></script>
-    <script src="../js/bootstrap-filestyle.js"></script>
-	<script src="../js/bootstrap-datepicker.js"></script>
   <!-- Slick slider -->
   <script type="text/javascript" src="../js/slick.js"></script>
   <!-- Counter -->
   <script type="text/javascript" src="../js/waypoints.js"></script>
   <script type="text/javascript" src="../js/jquery.counterup.js"></script>
-  <!-- Date Picker -->}
+  <!-- Date Picker -->
+  <script type="text/javascript" src="../js/bootstrap-datepicker.js"></script>
   <!-- Mixit slider -->
   <script type="text/javascript" src="../js/jquery.mixitup.js"></script>
   <!-- Add fancyBox -->
@@ -173,8 +197,5 @@
   <!-- Custom js -->
   <script src="../js/custom.js"></script>
 
-
-    <?php include("modalEvento.php");  ?>
-	<?php include("modalDelete.php");  ?>
   </body>
 </html>

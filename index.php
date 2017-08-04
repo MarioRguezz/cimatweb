@@ -84,7 +84,7 @@
             <span class="icon-bar"></span>
           </button>
           <!-- LOGO -->
-          <a class="navbar-brand" href="index.php"><img src="<?php echo $logo?>" alt="Logo img"></a>
+          <a class="navbar-brand" href="index.php"><img src="Resources<?php echo $logo?>" alt="Logo img"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">
@@ -97,8 +97,8 @@
                   echo
                   "<li class='dropdown'> <a class='dropdown-toggle' data-toggle='dropdown' href='#'>".$name." <span class='caret'></span></a>".
                       "<ul class='dropdown-menu' role='menu'>".
-                        "<li><a href='#'>Eventos</a></li>".
-                        '<li><a href="Resources/php/logout.php">Cerrar sesión</a></li>'.
+                        "<li><a href='Resources/views/eventos.php'>EVENTOS</a></li>".
+                        '<li><a href="Resources/php/logout.php">CERRAR SESIÓN</a></li>'.
                       "</ul>".
                     "</li>";
                 }
@@ -330,8 +330,8 @@
                       <img src="Resources/img/chef/chef-1.jpg" height="250" alt="chef img">
                     </figure>
                     <div class="mu-single-chef-info">
-                      <h4>Dr. Guillermo Cortés Robles.</h4>
-                      <span>Presidente de la Asociación Mexicana de TRIZ.</span>
+                      <h4 style="font-size:14px">Dr. Guillermo Cortés Robles</h4>
+                        <span style="font-size:9px">Presidente de la Asociación Mexicana</span>
                     </div>
                     <div class="mu-single-chef-social">
                       <a href="#"><i class="fa fa-facebook"></i></a>
@@ -342,12 +342,16 @@
                   </div>
                 </li>
                 <li>
+                    <a mp-mode="dftl" href="https://www.mercadopago.com/mlm/checkout/start?pref_id=19855528-f6ffd5da-77a2-488e-adba-bb2cb5aa8657" name="MP-payButton" class='blue-ar-l-rn-none'>Pagar</a>
+<script type="text/javascript">
+(function(){function $MPC_load(){window.$MPC_loaded !== true && (function(){var s = document.createElement("script");s.type = "text/javascript";s.async = true;s.src = document.location.protocol+"//secure.mlstatic.com/mptools/render.js";var x = document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s, x);window.$MPC_loaded = true;})();}window.$MPC_loaded !== true ? (window.attachEvent ?window.attachEvent('onload', $MPC_load) : window.addEventListener('load', $MPC_load, false)) : null;})();
+</script>
                   <div class="mu-single-chef">
                     <figure class="mu-single-chef-img">
                       <img src="Resources/img/chef/chef-2.jpg" height="250" alt="chef img">
                     </figure>
                     <div class="mu-single-chef-info">
-                      <h4>Dr. Miguel de Jesús Ramírez Cadena</h4>
+                      <h4 style="font-size:12px">Dr. Miguel de Jesús Ramírez Cadena</h4>
                       <span>Vicepresidente y Director</span>
                     </div>
                     <div class="mu-single-chef-social">
@@ -364,7 +368,7 @@
                       <img src="Resources/img/chef/chef-3.png" height="250" alt="chef img">
                     </figure>
                     <div class="mu-single-chef-info">
-                      <h4>Dr. Guillermo Flores Téllez</h4>
+                      <h4 style="font-size:14px">Dr. Guillermo Flores Téllez</h4>
                       <span>Secretarío General </span>
                     </div>
                     <div class="mu-single-chef-social">
@@ -381,7 +385,9 @@
                       <img src="Resources/img/chef/chef-4.png" height="250" alt="chef img">
                     </figure>
                     <div class="mu-single-chef-info">
-                      <h4>Marty Fukuda</h4>
+                      <h4>Marty Fukuda
+                      
+                      </h4>
                       <span>Secretarío General</span>
                     </div>
                     <div class="mu-single-chef-social">
@@ -398,7 +404,9 @@
                       <img src="Resources/img/chef/chef-5.jpg" height="250" alt="chef img">
                     </figure>
                     <div class="mu-single-chef-info">
-                      <h4>Dr. Christian Signoret</h4>
+                      <h4>Dr. Christian Signoret
+                      
+                      </h4>
                       <span>Secretario Tesorero</span>
                     </div>
                     <div class="mu-single-chef-social">
@@ -415,7 +423,7 @@
                       <img src="Resources/img/chef/chef-6.png" height="250" alt="chef img">
                     </figure>
                     <div class="mu-single-chef-info">
-                      <h4>Dr. Humberto Aguayo Téllez.</h4>
+                      <h4 style="font-size:14px">Dr. Humberto Aguayo Téllez</h4>
                       <span>Presidente Honorario</span>
                     </div>
                     <div class="mu-single-chef-social">
@@ -432,7 +440,9 @@
                       <img src="Resources/img/chef/chef-7.jpg" height="250" alt="chef img">
                     </figure>
                     <div class="mu-single-chef-info">
-                      <h4>Dr. Noel León Rovira.</h4>
+                      <h4>Dr. Noel León Rovira
+                      
+                      </h4>
                       <span>Presidente Honorario</span>
                     </div>
                     <div class="mu-single-chef-social">
@@ -449,7 +459,9 @@
                       <img src="Resources/img/chef/chef-8.jpg" height="250" alt="chef img">
                     </figure>
                     <div class="mu-single-chef-info">
-                      <h4>Dr. Edgardo Córdoba.</h4>
+                      <h4> Edgardo Córdoba
+                      
+                      </h4>
                       <span>Vicepresidente Honorario</span>
                     </div>
                     <div class="mu-single-chef-social">
@@ -611,7 +623,7 @@
                 </form>
               </div>
               <div class="modal-footer">
-                <a style="float:left;"href="#"> ¿No cuentas con cuenta?</a>
+                <a style="float:left;"href="Resources/views/createUser.php"> ¿No cuentas con cuenta?</a>
                   <button type="button" style="float:right;" class="btn btn-default" data-dismiss="modal">Cerrar</button>
               </div>
           </div>

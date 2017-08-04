@@ -99,7 +99,7 @@ if(isset($_SESSION['user'])){
                   "<li class='dropdown'> <a class='dropdown-toggle' data-toggle='dropdown' href='#'>".$name." <span class='caret'></span></a>".
                       "<ul class='dropdown-menu' role='menu'>".
                         "<li><a href='eventopublicoprivate.php'>MIS EVENTOS</a></li>".
-                        '<li><a href="logout.php">CERRAR SESIÓN</a></li>'.
+                        '<li><a href="../php/logout.php">CERRAR SESIÓN</a></li>'.
                       "</ul>".
                     "</li>";
                 }
@@ -120,28 +120,7 @@ if(isset($_SESSION['user'])){
                 </h1>
             </div>
         </div>
-        <!-- Alertas -->
-        <?php
-        if (isset($_POST["saved"])) {
-            if($_POST["saved"] == 1){
-        ?>
-       <div class="alert alert-success alert-dismissable">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            Su peticion se ha procesado correctamente.
-        </div>
-        <?php
-            }elseif($_POST["saved"] == 2){
-        ?>
-        <div class="alert alert-danger alert-dismissable">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            El registro se ha eliminado correctamente.
-        </div>
-         <?php
-            }
-        }
-        ?>
-        <hr>
-
+     
 		 <?php
         if($eventos){
             foreach ($eventos as $evento) {

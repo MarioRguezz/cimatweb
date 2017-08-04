@@ -98,7 +98,7 @@ if(isset($_SESSION['user'])){
                   "<li class='dropdown'> <a class='dropdown-toggle' data-toggle='dropdown' href='#'>".$name." <span class='caret'></span></a>".
                       "<ul class='dropdown-menu' role='menu'>".
                         "<li><a href='eventopublicoprivate.php'>MIS EVENTOS</a></li>".
-                        '<li><a href="logout.php">CERRAR SESIÓN</a></li>'.
+                        '<li><a href="../php/logout.php">CERRAR SESIÓN</a></li>'.
                       "</ul>".
                     "</li>";
                 }
@@ -162,6 +162,68 @@ if(isset($_SESSION['user'])){
         ?>
     </div>
 
+	
+	
+	
+  <!-- Modal Instructions -->
+  <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Ametriz</h4>
+              </div>
+              <div class="modal-body">
+                  <p>TRIZ son las siglas de "Teoría de la Solución de Problemas de Inventiva",
+                     y la Asociación Mexicana de TRIZ puede ayudarte a conocer las características
+                      y bondades de usar y aplicar la Metodología TRIZ.</p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              </div>
+          </div>
+
+      </div>
+  </div>
+
+
+  <!-- Modal login -->
+  <div id="myModalLogin" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Ametriz</h4>
+              </div>
+              <div class="modal-body">
+                <h3>Inicia sesión</h3>
+                <p>Ingresa tu usuario y contraseña</p>
+                <form action="../php/login.php" class="form-horizontal"  method="post" enctype="multipart/form-data">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input id="email" type="text" class="form-control" required name="email" placeholder="Email">
+                  </div>
+                  <br>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input id="password" type="password" class="form-control" required name="password" placeholder="Contraseña">
+                  </div>
+                  <br>
+                  <div class="input-group">
+                    <input type="submit" class="btn btn-primary" value="Entrar" />
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <a style="float:left;"href="Resources/views/createUser.php"> ¿No cuentas con cuenta?</a>
+                  <button type="button" style="float:right;" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              </div>
+          </div>
+      </div>
+  </div>
 	 <!-- Start Footer -->
 	<footer id="mu-footer">
 		<div class="container">

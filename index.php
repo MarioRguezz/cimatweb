@@ -278,7 +278,7 @@
 							</figure>
 							<div class="mu-news-single-content">
 								<ul class="mu-meta-nav">
-									<li><?php echo $evento[$fechainicio];?></li>
+									<li><?php echo $evento[$fechainicio];?>   -   <?php echo $evento[$fechafin];?></li>
 								</ul>
 								<p><?php echo $evento[$descripcion];?></p>
 								<div class="mu-news-single-bottom">

@@ -152,18 +152,10 @@ if(isset($_SESSION['user'])){
                 <div class="row">
                     <!-- Botones de funcion -->
                     <div class="col-lg-12 text-right">
-<<<<<<< HEAD
-                          <form action="programa.php" method="post">
-                            <a href="javascript:;" class="btn btn-xs btn-primary" onclick="parentNode.submit();">Programa</a>
-                           <input type="hidden" name="idevento" value="<?php echo $evento[$idevento];?>"/>
-                        </form>
 
-                        <button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#evento-modal" data-id="<?php echo $evento[$idevento];?>">Editar</button>
-                        <button type="button" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#confirm-delete" data-delete="<?php echo $evento[$idevento];?>">Eliminar</button>
-=======
                         <button type="button" class="mu-send-btn" data-toggle="modal" data-target="#evento-modal" data-id="<?php echo $evento[$idevento];?>">Editar</button>
                         <button type="button" class="mu-send-btn" data-toggle="modal" data-target="#confirm-delete" data-delete="<?php echo $evento[$idevento];?>">Eliminar</button>
->>>>>>> 6e6f066b2ee1d2fc299acc088ea4e38f239b6072
+
                     </div>
                     <!-- Imagen  -->
                     <div class="col-md-3">

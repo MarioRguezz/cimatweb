@@ -71,8 +71,9 @@ if(isset($_SESSION['user'])){
     </a>
   <!-- END SCROLL TOP BUTTON -->
 
+  <!-- Start header section -->
   <header id="mu-header">
-    <nav class="navbar navbar-default mu-main-navbar" style="background-color: <?PHP echo $backgroundcolor?> " role="navigation">
+    <nav class="navbar navbar-default mu-main-navbar" style="background-color: <?php echo $backgroundcolor?> " role="navigation">
       <div class="container">
         <div class="navbar-header">
           <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
@@ -83,23 +84,25 @@ if(isset($_SESSION['user'])){
             <span class="icon-bar"></span>
           </button>
           <!-- LOGO -->
-          <a class="navbar-brand" href="admin.php"><img src="../<?PHP echo $logo?>" alt="Logo img"></a>
+          <a class="navbar-brand" href="../../index.php"><img src="..<?php echo $logo?>" alt="Logo img"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">
-					<li><a href="../../">HOME</a></li>
-          <?PHP
-            if(!isset($_SESSION['user'])){
-                echo "<li><a  data-toggle='modal' data-target='#myModalLogin' href='#'>INICIA SESIÓN</a></li>";
-            }else{
-              echo
-              "<li class='dropdown'> <a class='dropdown-toggle' data-toggle='dropdown' href='#'>".$name." <span class='caret'></span></a>".
-                  "<ul class='dropdown-menu' role='menu'>".
-                    '<li><a href="../php/logout.php">CERRAR SESIÓN</a></li>'.
-                  "</ul>".
-                "</li>";
-            }
-            ?>
+            <li><a href="#">HOME</a></li>
+            <li><a href="eventopublico.php">EVENTOS</a></li>
+              <?PHP
+                if(!isset($_SESSION['user'])){
+                    echo "<li><a  data-toggle='modal' data-target='#myModalLogin' href='#'>INICIA SESIÓN</a></li>";
+                }else{
+                  echo
+                  "<li class='dropdown'> <a class='dropdown-toggle' data-toggle='dropdown' href='#'>".$name." <span class='caret'></span></a>".
+                      "<ul class='dropdown-menu' role='menu'>".
+                        "<li><a href='eventopublicoprivate.php'>MIS EVENTOS</a></li>".
+                        '<li><a href="logout.php">CERRAR SESIÓN</a></li>'.
+                      "</ul>".
+                    "</li>";
+                }
+              ?>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -115,26 +118,7 @@ if(isset($_SESSION['user'])){
                 </h1>
             </div>
         </div>
-        <!-- Alertas -->
-        <?php
-        if (isset($_POST["saved"])) {
-            if($_POST["saved"] == 1){
-        ?>
-       <div class="alert alert-success alert-dismissable">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            Su peticion se ha procesado correctamente.
-        </div>
-        <?php
-            }elseif($_POST["saved"] == 2){
-        ?>
-        <div class="alert alert-danger alert-dismissable">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            El registro se ha eliminado correctamente.
-        </div>
-         <?php
-            }
-        }
-        ?>
+       
         <hr>
 
 		 <?php

@@ -13,10 +13,8 @@
   } else{
 
   }
-  if (isset($_POST['idevento'])) {
-$evento = evento($_POST['idevento']);
-}
-
+	
+	$eventos = eventosInformacionHome();
 
 ?>
 
@@ -128,85 +126,42 @@ $evento = evento($_POST['idevento']);
   <!-- Start Blog -->
   <section id="mu-blog" style="margin-top:30px">
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="mu-blog-area">
-            <div class="row">
-              <div class="col-md-8 col-sm-8">
-                <div class="mu-blog-content mu-blog-details">
-                  <!-- Start Single blog item -->
-                  <article class="mu-news-single">
-                    <h2><a href="#"><?php echo $evento[$nombre];?></a></h2>
-                    <figure class="mu-news-img">
-                      <a href="#"><img src="../imagenes/<?php echo $evento[$foto];?>" alt="img"></a>
-                    </figure>
-                    <div class="mu-news-single-content">
-                      <ul class="mu-meta-nav">
-                        <li><?php echo $evento[$fechainicio];?> al <?php echo $evento[$fechainicio];?></li>
-                      </ul>
-						<p><?php echo $evento[$descripcion];?></p>
-                    </div>
-                    <div class="mu-news-single-bottom">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="mu-news-single-social">
-                            <!-- Load Facebook SDK for JavaScript -->
-                              <div id="fb-root"></div>
-                              <script>(function(d, s, id) {
-                                var js, fjs = d.getElementsByTagName(s)[0];
-                                if (d.getElementById(id)) return;
-                                js = d.createElement(s); js.id = id;
-                                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
-                                fjs.parentNode.insertBefore(js, fjs);
-                              }(document, 'script', 'facebook-jssdk'));</script>
 
-                              <!-- Your share button code -->
-                              <div class="fb-share-button"
-                                data-href="http://localhost/Cimat/Resources/views/evento.php"
-                                data-layout="button_count">
-                              </div>
-
-                            <ul class="mu-news-single-socialnav">
-                              <li>SHARE :</li>
-                              <li><a href="#"><span class="fa fa-facebook"></span></a></li>
-                              <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                              <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
-                              <li><a href="#"><span class="fa fa-youtube"></span></a></li>
-                              <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
+			 <?php
+        if($eventos){
+            foreach ($eventos as $evento) {
+                ?>
+                <div class="row">
+                    <!-- Imagen  -->
+                    <div class="col-md-3">
+                        <img class="img-responsive img-hover" src="../imagenes/<?php echo $evento[$foto];?>" alt="">
                     </div>
-                  </article>
-                  <!-- End Single blog item -->
+                    <!-- Resto de contenido -->
+                    <div class="col-md-9">
+                        <h3>
+                          <?php echo $evento[$nombre];?>
+                        </h3>
+                        <?php
+                        $desc = explode("\r\n", $evento[$descripcion]);
+                        foreach($desc as  $parrafo){
+                        ?>
+                            <p>
+                            <?php
+                            echo $parrafo;
+                            ?>
+                            </p>
+                        <?php
+                        }
+                        ?>
+                    </div>
                 </div>
-                <!-- End Blog navigation -->
-              </div>
-              <!-- Start Blog Sidebar -->
-              <div class="col-md-4 col-sm-4">
-                <aside class="mu-blog-sidebar">
-                  <!-- Blog Sidebar Single -->
-                  <div class="mu-blog-sidebar-single">
-                    <h3>Programa</h3>
-                    <ul class="mu-catg-nav">
-                      <li><a href="#">Titulo 1</a></li>
-                      <li><a href="#">Titulo 2</a></li>
-                      <li><a href="#">Titulo 3</a></li>
-                      <li><a href="#">Titulo 4</a></li>
-                      <li><a href="#">Titulo 5</a></li>
-                      <li><a href="#">Titulo 6</a></li>
-                      <li><a href="#">Titulo 7</a></li>
-                    </ul>
-                  </div>
-                  <!-- End Blog Sidebar Single -->
-                </aside>
-              </div>
-              <!-- End Blog Sidebar -->
-            </div>
-          </div>
-        </div>
-      </div>
+                <hr>
+                <?php
+            }
+        }
+        ?>
+	
+	
     </div>
   </section>
   <!-- End Blog -->

@@ -71,6 +71,35 @@ function eventosInformacionprivada(){
 	}
 }
 
+function eventosParticipacion($idusuario){
+
+	$mysqli = conect();
+	if(!$mysqli->connect_error){
+		$query = "SELECT e.* FROM eventos e LEFT JOIN usuario_evento ue
+				 ON e.idevento = ue.idevento LEFT JOIN usuarios u ON u.idusuario = ue.iidusuario
+				 WHERE u.idusuario = '$idusuario'";
+		$res = $mysqli->query($query);
+
+		if($res){
+			$NF = $res->num_rows;
+			for($i=0; $i <$NF; $i++){
+				$arreglo[$i] = $res->fetch_row();
+			}
+		}
+		$res->close();
+		
+        $mysqli->close();
+        return $arreglo;
+        print_r($arreglo);
+    
+
+		$mysqli->close();
+		return $arreglo;
+	}else{
+		return "sin conexion";
+	}
+}
+
 
 function eventosInformacionLimit(){
 

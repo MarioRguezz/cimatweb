@@ -5,7 +5,7 @@
     include '../php/template.php';
 	include '../php/dbManejador.php';
 	    session_start();
-  include_once '../php/models/User.php';
+  include_once '../php/Models/User.php';
   if(isset($_SESSION['user'])){
      $user = unserialize($_SESSION['user']);
      $name = $user->getNombre();

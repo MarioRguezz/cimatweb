@@ -45,11 +45,10 @@
     include '../php/conexion.php';
     include '../php/template.php';
     session_start();
-  include_once '../php/models/User.php';
+  include_once '../php/Models/User.php';
   if(isset($_SESSION['user'])){
      $user = unserialize($_SESSION['user']);
      $name = $user->getNombre();
-     var_dump($name);
   } else{
 
   }
@@ -186,7 +185,7 @@
                   </form>
                 </div>
                 <div class="modal-footer">
-                  <a style="float:left;"href="Resources/views/createUser.php"> ¿No cuentas con cuenta?</a>
+                  <a style="float:left;"href="#"> ¿No cuentas con cuenta?</a>
                     <button type="button" style="float:right;" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>

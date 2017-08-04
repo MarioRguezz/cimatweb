@@ -44,18 +44,24 @@ if(isset($_SESSION['user'])){
 
 }
 	if(!$mysqli->connect_error){
-$query = "SELECT * FROM usuario_evento WHERE iidusuario = '".$idusuario . "'";
+		// WHERE iidusuario = '".$idusuario . "'
+$query = "SELECT * FROM usuario_evento";
 $queryexecute  = mysqli_query($mysqli,$query);
-
+var_dump($query);
 $rowLogin = mysqli_fetch_array($queryexecute);
+var_dump(count($rowLogin));
+  for($i =0; $i< count($rowLogin); $i++){
+		//var_dump($rowLogin[0]);
 
+	}
+	/*
 foreach($rowLogin as $row){
 	var_dump($row[0]);
 	$query2 = "SELECT * FROM eventos  WHERE idevento = '".$row[2] . "'";
 	$queryexecute2 = mysqli_query($mysqli,$query2);
 	$rowLogin2 = mysqli_fetch_array($queryexecute2);
 	array_push($array,$rowLogin2);
-}
+}*/
 		$mysqli->close();
 		return $arreglo;
 	}else{

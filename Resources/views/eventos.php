@@ -88,6 +88,7 @@ if(isset($_SESSION['user'])){
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">
 					<li><a href="admin.php">HOME</a></li>
+          <li><a href="cupon.php">CUPON</a></li>
           <?PHP
             if(!isset($_SESSION['user'])){
                 echo "<li><a  data-toggle='modal' data-target='#myModalLogin' href='#'>INICIA SESIÓN</a></li>";

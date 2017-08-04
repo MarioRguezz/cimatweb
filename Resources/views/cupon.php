@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin | Home</title>
+    <title>Admin | Cupon</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
@@ -92,42 +92,6 @@
     </nav>
   </header>
 
-
-  <!-- Start Chef Section -->
-  <section id="mu-chef">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="mu-chef-area">
-            <div class="mu-title">
-              <span class="mu-subtitle">Bienvenido</span>
-              <h2> <?PHP echo $name?></h2>
-              <i class="fa fa-spoon"></i>
-              <span class="mu-title-bar"></span>
-            </div>
-              <div class="mu-chef-content">
-                <form action="../php/changeTemplate.php"   method="post" enctype="multipart/form-data" class=" mu-contact-form">
-                <div class="form-group">
-                  <label for="name">Selecciona el color de tu barra de menú</label>
-                  <input style="max-width:200px;" name="barracolor" id="barracolor" required  type="color" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="name">Selecciona el logo</label>
-                    <label for="fotografia" class="form-control-label">Fotograf&iacutea:</label>
-                    <input type="file" accept="image/x-png,image/gif,image/jpeg" required class="filestyle" data-buttonBefore="true" data-buttonText="Buscar Fotografía" id="fotografia" name="fotografia">
-                    <span class="help-block" id="fotografiaError" />
-               </div>
-               <button type="submit" class="mu-send-btn">Cambiar</button>
-              </form>
-              </div>
-
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Chef Section -->
 
   <!-- Start Footer -->
   <footer id="mu-footer" style="margin-top:100px">

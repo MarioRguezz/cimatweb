@@ -31,6 +31,26 @@ function eventosInformacion(){
 	}
 }
 
+function programaInformacion($evento){
+		$mysqli = conect();
+    if(!$mysqli->connect_error){
+		$query = "select * from programa where idevento='$evento'";
+        $res = $mysqli->query($query);
+		if($res){
+			$NF = $res->num_rows;
+			for($i=0; $i <$NF; $i++){
+				$arreglo[$i] = $res->fetch_row();
+			}
+		}
+		$res->close();
+		
+        $mysqli->close();
+        return $arreglo;
+        print_r($arreglo);
+    }
+
+}
+
 function obtenerEventoInfo(){
 
 	include("conexion.php");
@@ -46,6 +66,8 @@ function obtenerEventoInfo(){
 		return "sin conexion";
 	}
 }
+
+
 
 function actualizarEvento(){
 	include("conexion.php");

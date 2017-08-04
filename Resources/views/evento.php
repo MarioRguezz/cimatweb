@@ -9,6 +9,7 @@
   if(isset($_SESSION['user'])){
      $user = unserialize($_SESSION['user']);
      $name = $user->getNombre();
+	 $idusuario = $user->getidUsuario();
      var_dump($name);
   } else{
 
@@ -69,10 +70,7 @@ $evento = evento($_POST['idevento']);
 
   </head>
   <body>
-    <?PHP
 
-
-    ?>
   <!-- Pre Loader -->
   <div id="aa-preloader-area">
     <div class="mu-preloader">
@@ -87,6 +85,7 @@ $evento = evento($_POST['idevento']);
   <!-- END SCROLL TOP BUTTON -->
 
   <!-- Start header section -->
+ <!-- Start header section -->
   <header id="mu-header">
     <nav class="navbar navbar-default mu-main-navbar" style="background-color: <?php echo $backgroundcolor?> " role="navigation">
       <div class="container">
@@ -112,8 +111,8 @@ $evento = evento($_POST['idevento']);
                   echo
                   "<li class='dropdown'> <a class='dropdown-toggle' data-toggle='dropdown' href='#'>".$name." <span class='caret'></span></a>".
                       "<ul class='dropdown-menu' role='menu'>".
-                        "<li><a href='#'>Eventos</a></li>".
-                        '<li><a href="../php/logout.php">Cerrar sesión</a></li>'.
+                        "<li><a href='eventopublicoprivate.php'>MIS EVENTOS</a></li>".
+                        '<li><a href="../php/logout.php">CERRAR SESIÓN</a></li>'.
                       "</ul>".
                     "</li>";
                 }
@@ -123,6 +122,7 @@ $evento = evento($_POST['idevento']);
       </div>
     </nav>
   </header>
+  <!-- End header section -->
   <!-- End header section -->
 
   <!-- Start Blog -->
@@ -175,8 +175,33 @@ $evento = evento($_POST['idevento']);
                               <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
                             </ul>
                           </div>
+
                         </div>
+
                       </div>
+					  <?php
+					    if(isset($_SESSION['user'])){
+						?>
+
+							<ul class="list-group">
+								<li  style="text-align: left;" class="list-group-item list-group-item-success">Capacidad<span  class="badge"><?php echo $evento[$capacidad]?></span></li>
+								<li style="text-align: left;"  class="list-group-item list-group-item-info">Participantes <span class="badge"><?php echo $evento[9]?></span></li> 
+								<li style="text-align: left;"  class="list-group-item list-group-item-warning">Disponibles<span class="badge"><?php echo $evento[$capacidad]-$evento[9]; ?></span></li> 
+							<ul>		        					  
+ 					  <?php
+							if(($evento[$capacidad]-$evento[9])>0){
+							?>
+
+									  <button type="button" class="mu-send-btn" data-toggle="modal" data-target="#inscripcion-modal" data-inscripcion="<?php echo $evento[$idevento];?>">Inscripci&oacute;n</button>
+			  
+							<?php		
+							}						
+						} else{
+
+						}
+						?>			  												  
+
+		  
                     </div>
                   </article>
                   <!-- End Single blog item -->
@@ -210,6 +235,44 @@ $evento = evento($_POST['idevento']);
     </div>
   </section>
   <!-- End Blog -->
+
+<!-- Modal Inscripcion -->
+    <div class="modal fade" id="inscripcion-modal" tabindex="-1" role="dialog" aria-labelledby="inscripcionModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Inscripci&oacute;n</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form id="inscripcionForm" enctype="multipart/form-data">
+
+                        <input type="hidden" value="<?php echo $evento[$idevento]?>" id="idevento">
+						<input type="hidden" value="<?php echo $idusuario?>" id="idusuario">
+
+                        <div class="form-group">
+                            <label for="nombre" class="form-control-label">Costo:</label>
+        <input type="text" readonly class="form-control" id="nombre" name="nombre" value="<?php echo $evento[$precio]?>">
+                            <span class="help-block" id="nombreError" />
+                        </div>
+						
+						
+
+                        <div id="success"></div>
+
+                        <div class="form-group">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="submite" id="buttonAccept" class="btn btn-primary">Aceptar</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
   <!-- Modal Instructions -->
@@ -272,7 +335,10 @@ $evento = evento($_POST['idevento']);
       </div>
   </div>
 
-
+  <form style="display: hidden" method="POST" id="formReload">
+        <input type="hidden" id="saved" name="saved" value="1"/>
+		        <input type="hidden" id="idevento" name="idevento" value="<?php echo $evento[$idevento]?>"/>
+    </form>
   <!-- Start Footer -->
   <footer id="mu-footer">
     <div class="container">
@@ -314,6 +380,43 @@ $evento = evento($_POST['idevento']);
 
   <!-- Custom js -->
   <script src="../js/custom.js"></script>
+    <script type="text/javascript">
 
+	    function SuccessForm() {
+        $("#formReload").submit();
+    }
+	
+	$(document).ready(function(){
+		$('#inscripcionForm').on('submit', function(e){
+			e.preventDefault();
+	
+			var form_data = new FormData();
+			
+            var url = '../php/inscribirEvento.php';
+
+			var idusuario = $("#idusuario").val();
+			var idevento =  $("#idevento").val();
+
+			form_data.append('idusuario', idusuario);
+			form_data.append('idevento', idevento);
+
+			$.ajax({
+				url: url,
+				type: "POST",
+				data:form_data,
+				contentType: false,
+				cache: false,
+				processData:false,
+				success: function(data){
+					if(data == 1){
+						alert("Te has inscrito satisfactoriamente.");
+						SuccessForm();
+					}
+				}
+			});
+
+		});
+	});
+    </script>
   </body>
 </html>

@@ -140,7 +140,7 @@ if(isset($_SESSION['user'])){
         <!-- Main button -->
         <div class="row">
             <div class="col-lg-12 text-right">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#evento-modal" data-id="<?php echo "nuevo"?>">Nuevo Evento</button>
+                <button type="button" class="mu-send-btn" data-toggle="modal" data-target="#evento-modal" data-id="<?php echo "nuevo"?>">Nuevo Evento</button>
             </div>
         </div>
         <hr>
@@ -152,8 +152,8 @@ if(isset($_SESSION['user'])){
                 <div class="row">
                     <!-- Botones de funcion -->
                     <div class="col-lg-12 text-right">
-                        <button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#evento-modal" data-id="<?php echo $evento[$idevento];?>">Editar</button>
-                        <button type="button" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#confirm-delete" data-delete="<?php echo $evento[$idevento];?>">Eliminar</button>
+                        <button type="button" class="mu-send-btn" data-toggle="modal" data-target="#evento-modal" data-id="<?php echo $evento[$idevento];?>">Editar</button>
+                        <button type="button" class="mu-send-btn" data-toggle="modal" data-target="#confirm-delete" data-delete="<?php echo $evento[$idevento];?>">Eliminar</button>
                     </div>
                     <!-- Imagen  -->
                     <div class="col-md-3">

@@ -31,12 +31,48 @@ function eventosInformacion(){
 	}
 }
 
+function eventosInformacionLimit(){
+	
+	$mysqli = conect();
+	if(!$mysqli->connect_error){
+		$query = "SELECT * FROM eventos ORDER BY fecha_inicio ASC LIMIT 4";
+		$res = $mysqli->query($query);
+		if($res){
+			$NF = $res->num_rows;
+			for($i=0; $i <$NF; $i++){
+				$arreglo[$i] = $res->fetch_row();
+			}
+		}
+		$res->close();
+		$mysqli->close();
+		return $arreglo;
+	}else{
+		return "sin conexion";
+	}
+}
+
+
 function obtenerEventoInfo(){
 
 	include("conexion.php");
 	$mysqli = conect();
 	if(!$mysqli->connect_error){
 		$query = "SELECT * FROM eventos WHERE idevento = ".$_POST['id']."";
+		$res = $mysqli->query($query);
+        $datos = $res->fetch_row();
+		$res->close();
+		$mysqli->close();
+		return 	$datos;
+	}else{
+		return "sin conexion";
+	}
+}
+
+function evento($idevento){
+	echo $idevento." sf";
+	$mysqli = conect();
+	if(!$mysqli->connect_error){
+		$query = "SELECT * FROM eventos WHERE idevento = '$idevento'";
 		$res = $mysqli->query($query);
         $datos = $res->fetch_row();
 		$res->close();

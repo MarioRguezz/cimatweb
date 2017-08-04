@@ -17,7 +17,7 @@
 $evento = evento($_POST['idevento']);
 }
 
-	
+
 ?>
 
 <html lang="en">
@@ -25,6 +25,13 @@ $evento = evento($_POST['idevento']);
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:url"           content="http://localhost/Cimat/Resources/views/evento.php" />
+      <meta property="og:type"          content="website" />
+      <meta property="og:title"         content="Ametriz" />
+      <meta property="og:description"   content="Conoce nuestros eventos" />
+      <meta property="og:image"         content="http://www.ametriz.org/wp-content/uploads/2016/10/cropped-logo_ametriz_nuevo_011.png" />
+
     <title>Ametriz | Home</title>
 
     <!-- Favicon -->
@@ -64,7 +71,7 @@ $evento = evento($_POST['idevento']);
   <body>
     <?PHP
 
-	
+
     ?>
   <!-- Pre Loader -->
   <div id="aa-preloader-area">
@@ -97,7 +104,7 @@ $evento = evento($_POST['idevento']);
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">
             <li><a href="#">HOME</a></li>
-            <li><a href="#">EVENTOS</a></li>
+            <li><a href="eventopublico.php">EVENTOS</a></li>
               <?PHP
                 if(!isset($_SESSION['user'])){
                     echo "<li><a  data-toggle='modal' data-target='#myModalLogin' href='#'>INICIA SESIÓN</a></li>";
@@ -118,9 +125,6 @@ $evento = evento($_POST['idevento']);
   </header>
   <!-- End header section -->
 
-
-
-  
   <!-- Start Blog -->
   <section id="mu-blog" style="margin-top:30px">
     <div class="container">
@@ -134,9 +138,9 @@ $evento = evento($_POST['idevento']);
                   <article class="mu-news-single">
                     <h2><a href="#"><?php echo $evento[$nombre];?></a></h2>
                     <figure class="mu-news-img">
-                      <a href="#"><img src="../imagenes/<?php echo $evento[$foto];?>" alt="img"></a>                      
+                      <a href="#"><img src="../imagenes/<?php echo $evento[$foto];?>" alt="img"></a>
                     </figure>
-                    <div class="mu-news-single-content">                      
+                    <div class="mu-news-single-content">
                       <ul class="mu-meta-nav">
                         <li><?php echo $evento[$fechainicio];?></li>
                       </ul>
@@ -146,6 +150,22 @@ $evento = evento($_POST['idevento']);
                       <div class="row">
                         <div class="col-md-6">
                           <div class="mu-news-single-social">
+                            <!-- Load Facebook SDK for JavaScript -->
+                              <div id="fb-root"></div>
+                              <script>(function(d, s, id) {
+                                var js, fjs = d.getElementsByTagName(s)[0];
+                                if (d.getElementById(id)) return;
+                                js = d.createElement(s); js.id = id;
+                                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
+                                fjs.parentNode.insertBefore(js, fjs);
+                              }(document, 'script', 'facebook-jssdk'));</script>
+
+                              <!-- Your share button code -->
+                              <div class="fb-share-button"
+                                data-href="http://localhost/Cimat/Resources/views/evento.php"
+                                data-layout="button_count">
+                              </div>
+
                             <ul class="mu-news-single-socialnav">
                               <li>SHARE :</li>
                               <li><a href="#"><span class="fa fa-facebook"></span></a></li>
@@ -159,12 +179,12 @@ $evento = evento($_POST['idevento']);
                       </div>
                     </div>
                   </article>
-                  <!-- End Single blog item -->                  
+                  <!-- End Single blog item -->
                 </div>
                 <!-- End Blog navigation -->
               </div>
               <!-- Start Blog Sidebar -->
-              <div class="col-md-4 col-sm-4">             
+              <div class="col-md-4 col-sm-4">
                 <aside class="mu-blog-sidebar">
                   <!-- Blog Sidebar Single -->
                   <div class="mu-blog-sidebar-single">

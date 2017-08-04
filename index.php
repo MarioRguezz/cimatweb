@@ -54,9 +54,9 @@
   } else{
 
   }
-  
+
 	$eventos = eventosInformacionLimit();
-	
+
     ?>
   <!-- Pre Loader -->
   <div id="aa-preloader-area">
@@ -89,7 +89,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">
             <li><a href="#">HOME</a></li>
-            <li><a href="#">EVENTOS</a></li>
+            <li><a href="Resources/views/eventopublico.php">EVENTOS</a></li>
               <?PHP
                 if(!isset($_SESSION['user'])){
                     echo "<li><a  data-toggle='modal' data-target='#myModalLogin' href='#'>INICIA SESIÓN</a></li>";
@@ -97,7 +97,7 @@
                   echo
                   "<li class='dropdown'> <a class='dropdown-toggle' data-toggle='dropdown' href='#'>".$name." <span class='caret'></span></a>".
                       "<ul class='dropdown-menu' role='menu'>".
-                        "<li><a href='Resources/views/eventos.php'>EVENTOS</a></li>".
+                        "<li><a href='Resources/views/eventopublicoprivate.php'>MIS EVENTOS</a></li>".
                         '<li><a href="Resources/php/logout.php">CERRAR SESIÓN</a></li>'.
                       "</ul>".
                     "</li>";
@@ -261,12 +261,12 @@
             <div class="mu-latest-news-content">
               <div class="row">
                 <!-- start single blog -->
-				
+
 				 <?php
 				if($eventos){
 					foreach ($eventos as $evento) {
 					?>
-					
+
 					<div class="col-md-6">
 						<article class="mu-news-single">
 							<h3><a href="#"><?php echo $evento[$nombre];?></a></h3>
@@ -279,23 +279,23 @@
 								</ul>
 								<p><?php echo $evento[$descripcion];?></p>
 								<div class="mu-news-single-bottom">
-				
+
 				<form action="Resources/views/evento.php" method="post">
 					<a href="javascript:;" class="mu-readmore-btn" onclick="parentNode.submit();">Leer M&aacute;s...</a>
 					<input type="hidden" name="idevento" id="idevento" value="<?php echo $evento[$idevento];?>"/>
 				</form>
-				
-				
+
+
 								</div>
 							</div>
 						</article>
 					</div>
-					
+
                 <?php
             }
         }
         ?>
-				
+
 
 
               </div>

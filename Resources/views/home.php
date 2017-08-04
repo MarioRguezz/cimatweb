@@ -53,7 +53,7 @@
       <div class="form-group">
         <input type="text" class="form-control" placeholder="buscar">
       </div>
-      <button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-search"> </span></button>
+      <button type="submit" class="mu-send-btn"> <span class="glyphicon glyphicon-search"> </span></button>
     </form>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#">Link</a></li>
